@@ -29,7 +29,6 @@ import javafx.util.Duration;
  */
 public class GameSessionView extends HBox{
     private GridPane grid=new GridPane();
-    private VBox vbox=new VBox();
     private int fromAngel=0,toAngel = 0,height=0,width;
     private GameSession gameSession=null;
     private HashMap<GameObject,ImageView> gameObjectImageViewMap=new HashMap<GameObject,ImageView>();
@@ -61,37 +60,7 @@ public class GameSessionView extends HBox{
                 gameObjectImageViewMap.put(gameObject, imageView);
             }
         }
-        
-        Image imageRestart=new Image("/img/restart.png");
-        Button buttonRestart=new Button();
-        buttonRestart.setGraphic(new ImageView(imageRestart));
-        
-        buttonRestart.setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event) {
-                grid.getChildren().clear(); 
-                vbox.getChildren().clear(); 
-                GameSessionView.this.getChildren().clear();
-                populateContent();
-            }
-            
-        });
-       
-        vbox.getChildren().add(grid);
-        vbox.setAlignment(Pos.CENTER);
-        
-        Text text=new Text("Nivelul: "+ gameSession.getLevelNumber());
-        text.setFont(Font.font("TimesNewRoman",FontWeight.BOLD,32));
-        
-        VBox leftVB= new VBox();
-        leftVB.getChildren().add(text);       
-        leftVB.getChildren().add(buttonRestart);
-        leftVB.setAlignment(Pos.TOP_LEFT); 
-        leftVB.setPadding(new Insets(25, 75, 50, 25));
-        leftVB.setSpacing(20);
-        
-        this.getChildren().add(leftVB);       
-        this.getChildren().add(vbox);              
+    
+        this.getChildren().add(grid);              
     }
 }
