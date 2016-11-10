@@ -90,6 +90,21 @@ public class GameSession
                     case '4':
                         gameObject=new FelFalLentJobb();
                         break;
+                    case '5':
+                        gameObject=new FelFalLentJobb();
+                        break;
+                    case '6':
+                        gameObject=new FelFalLentJobb();
+                        break;
+                    case '7':
+                        gameObject=new FelFalLentJobb();
+                        break;
+                    case '8':
+                        gameObject=new FelFalLentJobb();
+                        break;
+                    case '9':
+                        gameObject=new FelFalLentJobb();
+                        break;
                     case ' ':
                         gameObject=new Levego();
                         break;

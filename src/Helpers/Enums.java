@@ -24,7 +24,8 @@ public class Enums
         Piros,
         Zold,
         Kek,
-        Sarga,
-        Lila 
+        Narancs,
+        Lila,
+        Fekete
     }
 }

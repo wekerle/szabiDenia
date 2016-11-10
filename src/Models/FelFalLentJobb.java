@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class FelFalLentJobb extends GameObject{
 
-    private Image image=new Image("/img/falLentJobb.png");
+    private Image image=new Image("/img/kekSzivUres.png");
     
     @Override
     public Image getImage() 
