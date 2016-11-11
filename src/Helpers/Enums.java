@@ -18,14 +18,4 @@ public class Enums
         Jobbra,
         Ballra     
     }
-    
-    public enum Szin
-    {
-        Piros,
-        Zold,
-        Kek,
-        Narancs,
-        Lila,
-        Fekete
-    }
 }

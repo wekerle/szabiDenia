@@ -27,7 +27,7 @@ public class GameSession
     public GameSession(LevelModel level)
     {
         this.levelNumber=level.getLevelNumber();
-        char[][] matrix=level.getMatrix();
+        String[][] matrix=level.getMatrix();
         int height=matrix.length;
         int width=matrix[0].length;
         objects=new GameObject[height][width];
@@ -37,75 +37,68 @@ public class GameSession
         {
             for(j=0;j<width;j++)
             {
-                //# -fal
-                //a -szabi
-                //b -denia
-                //c -festekDoboz
-                //d -sziv
-                //e -virag
-                //f -ablak
-                //g -lajtorja
-                //' ' -levego
-                //1 -felfal fentball
-                //2 -felfal fentjobb
-                //3 -felfal lentball
-                //4 -felfal lentjobb
+                //ww -fal       
+                //wb -felfal fentball
+                //wd -felfal fentjobb
+                //wp -felfal lentball
+                //wq -felfal lentjobb
+                //"  " -levego
+                //sz -szabi
+                //de -denia
+
+                //fp -festekVederPiros
+                //fz -festekVederZold
+                //fk -festekVederKek
+                //fl -festekVederLila
+                //ff -festekVederFekete
+
+                //ps -pirosSziv
+                //zs -zoldSziv
+                //ks -kekSziv
+                //ls -lilaSziv
+                //fs -feketeSziv
+
+                //ns -nagySziv
+                //ab -ablak
+                //la -lajtorja
                 
                 GameObject gameObject=null;                
                 switch(matrix[i][j])
                 {
-                    case '#':
-                        gameObject=new Fal();
+                    case "ww":
+                    case "wb":
+                    case "wd":
+                    case "wp":    
+                    case "wq":
+                        gameObject=new Fal(matrix[i][j]);
                         break;
-                    case 'a':
+                    case "fp":
+                    case "fz":
+                    case "fk":
+                    case "fl":    
+                    case "ff":
+                        gameObject=new FestekVeder(matrix[i][j]);
+                        break;
+                    case "ps":
+                    case "zs":
+                    case "ks":
+                    case "ls":    
+                    case "fs":
+                        gameObject=new Sziv(matrix[i][j]);
+                        break;
+                    case "sz":
                         gameObject=new Szabi();
                         break;
-                    case 'b':
+                    case "de":
                         gameObject=new Denia();
                         break;
-                    case 'c':
-                        gameObject=new FestekDoboz();
-                        break;
-                    case 'd':
-                        gameObject=new Sziv();
-                        break;
-                    case 'e':
-                        gameObject=new Virag();
-                        break;
-                    case 'f':
+                    case "ab":
                         gameObject=new Ablak();
                         break;
-                    case 'g':
+                    case "la":
                         gameObject=new Lajtorja();
-                        break;
-                    case '1':
-                        gameObject=new FelFalFentBal();
-                        break;
-                    case '2':
-                        gameObject=new FelFalFentJobb();
-                        break;
-                    case '3':
-                        gameObject=new FelFalLentBal();
-                        break;
-                    case '4':
-                        gameObject=new FelFalLentJobb();
-                        break;
-                    case '5':
-                        gameObject=new FelFalLentJobb();
-                        break;
-                    case '6':
-                        gameObject=new FelFalLentJobb();
-                        break;
-                    case '7':
-                        gameObject=new FelFalLentJobb();
-                        break;
-                    case '8':
-                        gameObject=new FelFalLentJobb();
-                        break;
-                    case '9':
-                        gameObject=new FelFalLentJobb();
-                        break;
-                    case ' ':
+                        break;                    
+                    case "  ":
                         gameObject=new Levego();
                         break;
                 }

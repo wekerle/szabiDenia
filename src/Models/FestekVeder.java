@@ -11,35 +11,35 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class SzinesVeder extends GameObject{
+public class FestekVeder extends GameObject{
+
     private Image image=null;
     
-    public SzinesVeder(Helpers.Enums.Szin szin){
-        switch(szin)
-        {
-            case Piros:
+    public FestekVeder(String cod)
+    {
+        switch(cod){
+            case "fp":
                 image=new Image("/img/pirosVeder.png");
                 break;
-            case Fekete:
-                image=new Image("/img/feketeVeder.png");
+            case "fz":
+                image=new Image("/img/zoldVeder.png");
                 break;
-            case Kek:
+            case "fk":
                 image=new Image("/img/kekVeder.png");
                 break;
-            case Lila:
+            case "fl":
                 image=new Image("/img/lilaVeder.png");
                 break;
-            case Narancs:
-                image=new Image("/img/narancsVeder.png");
-                break;
-            case Zold:
-                image=new Image("/img/lilaVeder.png");
+            case "ff":
+                image=new Image("/img/feketeVeder.png");
                 break;
         }
     }
+    
     @Override
     public Image getImage() 
     {
         return image;
     }
+    
 }

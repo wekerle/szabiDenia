@@ -10,18 +10,18 @@ package Models;
  * @author tibor.wekerle
  */
 public class LevelModel {
-    private char[][] matrix;
+    private String[][] matrix;
     private int levelNumber;
     private int levelId;
     
-    public LevelModel(char[][] matrix,int levelNumber, int levelId)
+    public LevelModel(String[][] matrix,int levelNumber, int levelId)
     {
         this.matrix=matrix;
         this.levelNumber=levelNumber;
         this.levelId=levelId;
     }
 
-    public char[][] getMatrix() 
+    public String[][] getMatrix() 
     {
         return matrix;
     }

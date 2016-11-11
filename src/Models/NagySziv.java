@@ -11,9 +11,9 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class FelFalFentJobb extends GameObject{
+public class NagySziv extends GameObject{
 
-    private Image image=new Image("/img/falFentJobb.png");
+    private Image image=new Image("/img/forgoSziv2.gif");
     
     @Override
     public Image getImage() 
