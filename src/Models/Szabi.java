@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class Szabi extends GameObject{
 
-    private Image image=new Image("/img/wall.png");
+    private Image image=new Image("/img/people.png");
     
     @Override
     public Image getImage() 

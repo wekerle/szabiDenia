@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class Lajtorja extends GameObject{
 
-    private Image image=new Image("/img/letraTesztKicsi.jpg");
+    private Image image=new Image("/img/letraKicsi.png");
     
     @Override
     public Image getImage() 

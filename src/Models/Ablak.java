@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class Ablak extends GameObject{
     
-    private Image image=new Image("/img/ablakKicsiTeszt.jpg");
+    private Image image=new Image("/img/ablak.png");
     
     @Override
     public Image getImage() 

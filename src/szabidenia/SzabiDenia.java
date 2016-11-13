@@ -65,7 +65,7 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
     
         scene.getStylesheets().add("Styling/styles.css");
                                                      
-        primaryStage.setWidth(800);
+        primaryStage.setWidth(850);
         primaryStage.setHeight(650);
         
         primaryStage.setTitle("Alkoholistak");

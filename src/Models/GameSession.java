@@ -101,6 +101,9 @@ public class GameSession
                     case "  ":
                         gameObject=new Levego();
                         break;
+                    case "ns":
+                        gameObject=new NagySziv();
+                        break;
                 }
                 objects[i][j]=gameObject;
                 gameObject.currentI=i;
