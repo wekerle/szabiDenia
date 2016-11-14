@@ -18,6 +18,7 @@ public class GameSession
     private GameObject[][] objects=null;
     private int levelNumber;
     private boolean lose=false;
+    private Szabi szabi=null;
         
     public int getLevelNumber() 
     {
@@ -88,6 +89,7 @@ public class GameSession
                         break;
                     case "sz":
                         gameObject=new Szabi();
+                        this.szabi=(Szabi)gameObject;
                         break;
                     case "de":
                         gameObject=new Denia();
@@ -126,5 +128,88 @@ public class GameSession
     public GameObject getGameObjectAt(int x,int y)
     {
         return objects[x][y];
-    }           
+    }
+    
+    public int getNumberOfStepsI(Helpers.Enums.Irany irany)
+    {
+        return szabi.getNumberOfStepsI(irany, szabi.getCurrentI(), szabi.getCurrentJ());
+    }
+    
+    public int getNumberOfStepsJ(Helpers.Enums.Irany irany)
+    {
+        return szabi.getNumberOfStepsJ(irany, szabi.getCurrentI(), szabi.getCurrentJ());
+    }
+    
+    public Szabi getSzabi()
+    {
+        return szabi;
+    }
+    
+    public void simulateNextStepOnSession(int numberStepsI,int numberStepsJ,Helpers.Enums.Irany irany)
+    {
+        if(numberStepsI==0 && numberStepsJ==0)
+        {
+            return;
+        }
+        int i=szabi.getCurrentI();
+        int j=szabi.getCurrentJ();
+        GameObject temp=objects[i][j];
+        objects[i][j]=objects[i+numberStepsI][j+numberStepsJ];
+        objects[i+numberStepsI][j+numberStepsJ]=temp;
+    }
+    
+    public Helpers.Enums.Irany getNewIrany(Helpers.Enums.Irany regiIrany)
+    {
+        GameObject gameObject=szabi.getNeighbor(regiIrany, szabi.getCurrentI(), szabi.getCurrentJ());
+        
+        Helpers.Enums.Irany nextIrany=null;
+        if(gameObject instanceof Fal)
+        {
+           String cod=((Fal) gameObject).getCode();
+           
+           switch(cod){
+                case "ww":
+                    nextIrany=null;
+                   break;
+                case "wd":
+                    if(regiIrany==Helpers.Enums.Irany.Jobbra)
+                    {
+                        nextIrany=Enums.Irany.Fel;
+                    }else if(regiIrany==Enums.Irany.Le)
+                    {
+                        nextIrany=Enums.Irany.Balra;
+                    }
+                   break;
+                case "wb":
+                    if(regiIrany==Helpers.Enums.Irany.Balra)
+                    {
+                        nextIrany=Enums.Irany.Fel;
+                    }else if(regiIrany==Enums.Irany.Le)
+                    {
+                        nextIrany=Enums.Irany.Jobbra;
+                    }
+                   break;
+                case "wp":
+                    if(regiIrany==Helpers.Enums.Irany.Balra)
+                    {
+                        nextIrany=Enums.Irany.Le;
+                    }else if(regiIrany==Enums.Irany.Fel)
+                    {
+                        nextIrany=Enums.Irany.Jobbra;
+                    }
+                   break;
+                case "wq":
+                    if(regiIrany==Helpers.Enums.Irany.Jobbra)
+                    {
+                        nextIrany=Enums.Irany.Le;
+                    }else if(regiIrany==Enums.Irany.Fel)
+                    {
+                        nextIrany=Enums.Irany.Balra;
+                    }
+                   break;
+           }
+        }
+        
+        return nextIrany;
+    }
 }

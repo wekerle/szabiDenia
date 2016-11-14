@@ -16,6 +16,6 @@ public class Enums
         Fel,
         Le,
         Jobbra,
-        Ballra     
+        Balra     
     }
 }

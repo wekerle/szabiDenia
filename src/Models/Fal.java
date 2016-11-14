@@ -14,9 +14,11 @@ import javafx.scene.image.Image;
 public class Fal extends GameObject{
 
     private Image image=null;
+    private String cod;
     
     public Fal(String cod)
     {
+        this.cod=cod;
         switch(cod){
             case "ww":
                 image=new Image("/img/fal.png");
@@ -40,5 +42,10 @@ public class Fal extends GameObject{
     public Image getImage() 
     {
         return image;
-    }   
+    }
+    
+    public String getCode()
+    {
+        return this.cod;
+    }
 }
