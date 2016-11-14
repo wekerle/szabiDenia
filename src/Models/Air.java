@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class Levego extends GameObject{
+public class Air extends GameObject{
 
     @Override
     public Image getImage() 

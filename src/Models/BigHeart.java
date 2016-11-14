@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class NagySziv extends GameObject{
+public class BigHeart extends GameObject{
 
     private Image image=new Image("/img/forgoSziv2.gif");
     

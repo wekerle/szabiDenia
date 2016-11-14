@@ -11,11 +11,11 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class Sziv extends GameObject{
+public class Heart extends GameObject{
 
     private Image image=null;
     
-    public Sziv(String cod)
+    public Heart(String cod)
     {
         switch(cod){
             case "ps":

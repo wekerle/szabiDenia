@@ -11,11 +11,19 @@ package Helpers;
  */
 public class Enums 
 {
-    public enum Irany
+    public enum Direction
     {
         Fel,
         Le,
         Jobbra,
         Balra     
+    }
+    
+    public enum Color
+    {
+        Red,
+        Green,
+        Blue,
+        Purple     
     }
 }

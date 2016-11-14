@@ -16,21 +16,21 @@ import javafx.scene.image.Image;
 public abstract class GameObject 
 {
     protected GameSession gameSession=null;
-    protected int fromX,toX,fromY,toY,currentI,currentJ;
+    protected int currentX,currentY,currentI,currentJ;
 
     public void setGameSession(GameSession gameSession) 
     {
         this.gameSession = gameSession;
     }
 
-    public int getFromX() 
+    public int getCurrentX() 
     {
-        return fromX;
+        return currentX;
     }
 
-    public void setFromX(int fromX) 
+    public void setCurrentX(int currentX) 
     {
-        this.fromX = fromX;
+        this.currentX = currentX;
     }
     
     public int getCurrentI() 
@@ -53,34 +53,14 @@ public abstract class GameObject
         this.currentJ = currentJ;
     }
 
-    public int getToX() 
+    public int getCurrentY() 
     {
-        return toX;
+        return currentY;
     }
 
-    public void setToX(int toX) 
+    public void setCurrentY(int currentY) 
     {
-        this.toX = toX;
-    }
-
-    public int getFromY() 
-    {
-        return fromY;
-    }
-
-    public void setFromY(int fromY) 
-    {
-        this.fromY = fromY;
-    }
-
-    public int getToY() 
-    {
-        return toY;
-    }
-
-    public void setToY(int toY) 
-    {
-        this.toY = toY;
+        this.currentY = currentY;
     }
     
     public abstract Image getImage();

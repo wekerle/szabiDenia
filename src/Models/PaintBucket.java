@@ -11,12 +11,14 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class FestekVeder extends GameObject{
+public class PaintBucket extends GameObject{
 
     private Image image=null;
+    private String cod=null;
     
-    public FestekVeder(String cod)
+    public PaintBucket(String cod)
     {
+        this.cod=cod;
         switch(cod){
             case "fp":
                 image=new Image("/img/pirosVeder.png");
@@ -40,6 +42,11 @@ public class FestekVeder extends GameObject{
     public Image getImage() 
     {
         return image;
+    }
+    
+    public String getCode()
+    {
+        return this.cod;
     }
     
 }

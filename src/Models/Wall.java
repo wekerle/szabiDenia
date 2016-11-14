@@ -11,12 +11,12 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class Fal extends GameObject{
+public class Wall extends GameObject{
 
     private Image image=null;
     private String cod;
     
-    public Fal(String cod)
+    public Wall(String cod)
     {
         this.cod=cod;
         switch(cod){

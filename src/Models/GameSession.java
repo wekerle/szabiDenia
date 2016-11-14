@@ -2,6 +2,8 @@ package Models;
 
 import Helpers.Enums;
 import java.util.ArrayList;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -71,25 +73,27 @@ public class GameSession
                     case "wd":
                     case "wp":    
                     case "wq":
-                        gameObject=new Fal(matrix[i][j]);
+                        gameObject=new Wall(matrix[i][j]);
                         break;
                     case "fp":
                     case "fz":
                     case "fk":
                     case "fl":    
                     case "ff":
-                        gameObject=new FestekVeder(matrix[i][j]);
+                        gameObject=new PaintBucket(matrix[i][j]);
                         break;
                     case "ps":
                     case "zs":
                     case "ks":
                     case "ls":    
                     case "fs":
-                        gameObject=new Sziv(matrix[i][j]);
+                        gameObject=new Heart(matrix[i][j]);
                         break;
                     case "sz":
                         gameObject=new Szabi();
                         this.szabi=(Szabi)gameObject;
+                        this.szabi.setCurrentX(25);
+                        this.szabi.setCurrentY(25);
                         break;
                     case "de":
                         gameObject=new Denia();
@@ -98,13 +102,13 @@ public class GameSession
                         gameObject=new Ablak();
                         break;
                     case "la":
-                        gameObject=new Lajtorja();
+                        gameObject=new Ladder();
                         break;                    
                     case "  ":
-                        gameObject=new Levego();
+                        gameObject=new Air();
                         break;
                     case "ns":
-                        gameObject=new NagySziv();
+                        gameObject=new BigHeart();
                         break;
                 }
                 objects[i][j]=gameObject;
@@ -129,23 +133,13 @@ public class GameSession
     {
         return objects[x][y];
     }
-    
-    public int getNumberOfStepsI(Helpers.Enums.Irany irany)
-    {
-        return szabi.getNumberOfStepsI(irany, szabi.getCurrentI(), szabi.getCurrentJ());
-    }
-    
-    public int getNumberOfStepsJ(Helpers.Enums.Irany irany)
-    {
-        return szabi.getNumberOfStepsJ(irany, szabi.getCurrentI(), szabi.getCurrentJ());
-    }
-    
+        
     public Szabi getSzabi()
     {
         return szabi;
     }
     
-    public void simulateNextStepOnSession(int numberStepsI,int numberStepsJ,Helpers.Enums.Irany irany)
+    public void simulateNextStepOnSession(int numberStepsI,int numberStepsJ,Helpers.Enums.Direction direction)
     {
         if(numberStepsI==0 && numberStepsJ==0)
         {
@@ -157,59 +151,9 @@ public class GameSession
         objects[i][j]=objects[i+numberStepsI][j+numberStepsJ];
         objects[i+numberStepsI][j+numberStepsJ]=temp;
     }
-    
-    public Helpers.Enums.Irany getNewIrany(Helpers.Enums.Irany regiIrany)
+        
+    public Path constrcutPath(Helpers.Enums.Direction direction)
     {
-        GameObject gameObject=szabi.getNeighbor(regiIrany, szabi.getCurrentI(), szabi.getCurrentJ());
-        
-        Helpers.Enums.Irany nextIrany=null;
-        if(gameObject instanceof Fal)
-        {
-           String cod=((Fal) gameObject).getCode();
-           
-           switch(cod){
-                case "ww":
-                    nextIrany=null;
-                   break;
-                case "wd":
-                    if(regiIrany==Helpers.Enums.Irany.Jobbra)
-                    {
-                        nextIrany=Enums.Irany.Fel;
-                    }else if(regiIrany==Enums.Irany.Le)
-                    {
-                        nextIrany=Enums.Irany.Balra;
-                    }
-                   break;
-                case "wb":
-                    if(regiIrany==Helpers.Enums.Irany.Balra)
-                    {
-                        nextIrany=Enums.Irany.Fel;
-                    }else if(regiIrany==Enums.Irany.Le)
-                    {
-                        nextIrany=Enums.Irany.Jobbra;
-                    }
-                   break;
-                case "wp":
-                    if(regiIrany==Helpers.Enums.Irany.Balra)
-                    {
-                        nextIrany=Enums.Irany.Le;
-                    }else if(regiIrany==Enums.Irany.Fel)
-                    {
-                        nextIrany=Enums.Irany.Jobbra;
-                    }
-                   break;
-                case "wq":
-                    if(regiIrany==Helpers.Enums.Irany.Jobbra)
-                    {
-                        nextIrany=Enums.Irany.Le;
-                    }else if(regiIrany==Enums.Irany.Fel)
-                    {
-                        nextIrany=Enums.Irany.Balra;
-                    }
-                   break;
-           }
-        }
-        
-        return nextIrany;
+        return szabi.constructPath(direction);
     }
 }

@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
  *
  * @author tibor.wekerle
  */
-public class Lajtorja extends GameObject{
+public class Ladder extends GameObject{
 
     private Image image=new Image("/img/letraKicsi.png");
     
