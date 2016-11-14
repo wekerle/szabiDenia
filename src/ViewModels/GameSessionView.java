@@ -6,31 +6,34 @@
 package ViewModels;
 
 import Helpers.Enums;
+import Listener.HeartColoringListener;
 import Models.GameObject;
 import Models.GameSession;
+import Models.Heart;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.CubicCurveTo;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 /**
  *
  * @author tibor.wekerle
  */
-public class GameSessionView extends HBox{
+public class GameSessionView extends HBox implements HeartColoringListener{
     private GridPane grid=new GridPane();
     private int fromAngel=0,toAngel = 0,height=0,width;
     private GameSession gameSession=null;
@@ -93,7 +96,11 @@ public class GameSessionView extends HBox{
                 
                 if(gameObject!=null)
                 {
-                    imageView.setImage(gameSession.getGameObjectAt(i, j).getImage());                                       
+                    imageView.setImage(gameSession.getGameObjectAt(i, j).getImage());
+                    if(gameObject instanceof Heart)
+                    {
+                        ((Heart)gameObject).setHeartColoringListener(this);
+                    }
                 }
                 grid.add(imageView,j,i);
                 gameObjectImageViewMap.put(gameObject, imageView);
@@ -132,6 +139,20 @@ public class GameSessionView extends HBox{
         pathTransition.setCycleCount(1);
         pathTransition.play();
         
+        currentImageView.boundsInParentProperty().addListener(new ChangeListener<Bounds>() {
+            @Override
+            public void changed(ObservableValue<? extends Bounds> observable,
+                    Bounds oldValue, Bounds newValue) {
+                    System.out.println(oldValue);
+            }
+        });
         
+        
+    }
+
+    @Override
+    public void heartColoring(Heart heart) {
+        ImageView currentImageView=gameObjectImageViewMap.get(heart);
+        currentImageView.setImage(new Image("/img/letraKicsi.png"));
     }
 }

@@ -17,7 +17,7 @@ import javafx.scene.shape.Path;
  */
 public class Szabi extends GameObject{
 
-    private Image image=new Image("/img/people.png");
+    private Image image=new Image("/img/szabi.png");
     private Path path= null;
     private Helpers.Enums.Color color=null;
     
@@ -46,6 +46,10 @@ public class Szabi extends GameObject{
                     {
                         this.setColor(((PaintBucket)neighbor).getCode());
                     }
+                    if(neighbor instanceof Heart)
+                    {
+                       ((Heart)neighbor).colorHeart();
+                    }
                     
                     tempI--;
                     numberOfSteps--;
@@ -68,6 +72,11 @@ public class Szabi extends GameObject{
                 neighbor=getNeighbor(direction, tempI, jPos);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
                 {
+                    if(neighbor instanceof Heart)
+                    {
+                       ((Heart)neighbor).colorHeart();
+                    }
+                    
                     if(neighbor instanceof PaintBucket)
                     {
                         this.setColor(((PaintBucket)neighbor).getCode());
@@ -108,6 +117,11 @@ public class Szabi extends GameObject{
                 neighbor=getNeighbor(direction, iPos, tempJ);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
                 {
+                    if(neighbor instanceof Heart)
+                    {
+                       ((Heart)neighbor).colorHeart();
+                    }
+                    
                     if(neighbor instanceof PaintBucket)
                     {
                         this.setColor(((PaintBucket)neighbor).getCode());
@@ -134,6 +148,11 @@ public class Szabi extends GameObject{
                 neighbor=getNeighbor(direction, iPos, tempJ);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
                 {
+                    if(neighbor instanceof Heart)
+                    {
+                       ((Heart)neighbor).colorHeart();
+                    }
+                    
                     if(neighbor instanceof PaintBucket)
                     {
                         this.setColor(((PaintBucket)neighbor).getCode());

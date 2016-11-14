@@ -5,6 +5,7 @@
  */
 package Models;
 
+import Listener.HeartColoringListener;
 import javafx.scene.image.Image;
 
 /**
@@ -14,6 +15,17 @@ import javafx.scene.image.Image;
 public class Heart extends GameObject{
 
     private Image image=null;
+    private boolean isColored=false;
+    private HeartColoringListener heartColoringListener=null;
+    
+    public void setHeartColoringListener(HeartColoringListener heartColoringListener)
+    {
+        this.heartColoringListener=heartColoringListener;
+    }
+    public void colorHeart()
+    {
+        this.heartColoringListener.heartColoring(this);
+    }
     
     public Heart(String cod)
     {
