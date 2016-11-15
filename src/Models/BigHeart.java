@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
  */
 public class BigHeart extends GameObject{
 
-    private Image image=new Image("/img/forgoSziv3.gif");
+    private Image image=new Image("/img/forgoSziv.gif");
     
     @Override
     public Image getImage() 

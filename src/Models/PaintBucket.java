@@ -14,26 +14,26 @@ import javafx.scene.image.Image;
 public class PaintBucket extends GameObject{
 
     private Image image=null;
-    private String cod=null;
+    private Helpers.Enums.Color color=null;
     
     public PaintBucket(String cod)
     {
-        this.cod=cod;
         switch(cod){
             case "fp":
+                this.color=Helpers.Enums.Color.Red;
                 image=new Image("/img/pirosVeder.png");
                 break;
             case "fz":
+                this.color=Helpers.Enums.Color.Green;
                 image=new Image("/img/zoldVeder.png");
                 break;
             case "fk":
+                this.color=Helpers.Enums.Color.Blue;
                 image=new Image("/img/kekVeder.png");
                 break;
             case "fl":
+                this.color=Helpers.Enums.Color.Purple;
                 image=new Image("/img/lilaVeder.png");
-                break;
-            case "ff":
-                image=new Image("/img/feketeVeder.png");
                 break;
         }
     }
@@ -43,10 +43,9 @@ public class PaintBucket extends GameObject{
     {
         return image;
     }
-    
-    public String getCode()
+
+    public Helpers.Enums.Color getColor()
     {
-        return this.cod;
+        return this.color;
     }
-    
 }

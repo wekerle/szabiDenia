@@ -62,7 +62,6 @@ public class GameSession
                 //fs -feketeSziv
 
                 //ns -nagySziv
-                //ab -ablak
                 //la -lajtorja
                 
                 GameObject gameObject=null;                
@@ -97,9 +96,6 @@ public class GameSession
                         break;
                     case "de":
                         gameObject=new Denia();
-                        break;
-                    case "ab":
-                        gameObject=new Ablak();
                         break;
                     case "la":
                         gameObject=new Ladder();

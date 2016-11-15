@@ -5,7 +5,6 @@
  */
 package Models;
 
-import Listener.HeartColoringListener;
 import javafx.scene.image.Image;
 
 /**
@@ -15,35 +14,32 @@ import javafx.scene.image.Image;
 public class Heart extends GameObject{
 
     private Image image=null;
+    private Image coloredImage=null;
     private boolean isColored=false;
-    private HeartColoringListener heartColoringListener=null;
-    
-    public void setHeartColoringListener(HeartColoringListener heartColoringListener)
-    {
-        this.heartColoringListener=heartColoringListener;
-    }
-    public void colorHeart()
-    {
-        this.heartColoringListener.heartColoring(this);
-    }
+    private Helpers.Enums.Color color=null;
     
     public Heart(String cod)
     {
         switch(cod){
             case "ps":
+                this.color=Helpers.Enums.Color.Red;
                 image=new Image("/img/pirosSzivUres.png");
+                coloredImage=new Image("/img/pirosSzivTeli.png");
                 break;
             case "zs":
+                this.color=Helpers.Enums.Color.Green;
                 image=new Image("/img/zoldSzivUres.png");
+                coloredImage=new Image("/img/zoldSzivTeli.png");
                 break;
             case "ks":
+                this.color=Helpers.Enums.Color.Blue;
                 image=new Image("/img/kekSzivUres.png");
+                coloredImage=new Image("/img/kekSzivTeli.png");
                 break;
             case "ls":
+                this.color=Helpers.Enums.Color.Purple;
                 image=new Image("/img/lilaSzivUres.png");
-                break;
-            case "fs":
-                image=new Image("/img/feketeSzivUres.png");
+                coloredImage=new Image("/img/lilaSzivTeli.png");
                 break;
         }
     }
@@ -54,4 +50,23 @@ public class Heart extends GameObject{
         return image;
     }
     
+    public boolean isColored()
+    {
+        return this.isColored;
+    }
+    
+    public void setColored(boolean isColored)
+    {
+        this.isColored=isColored;
+    }
+
+    public Helpers.Enums.Color getColor()
+    {
+        return this.color;
+    }
+    
+    public Image getColoredImage()
+    {
+        return this.coloredImage;
+    }
 }

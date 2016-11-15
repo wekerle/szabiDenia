@@ -41,16 +41,7 @@ public class Szabi extends GameObject{
             case Fel:                 
                 neighbor=getNeighbor(direction, tempI, jPos);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
-                {
-                    if(neighbor instanceof PaintBucket)
-                    {
-                        this.setColor(((PaintBucket)neighbor).getCode());
-                    }
-                    if(neighbor instanceof Heart)
-                    {
-                       ((Heart)neighbor).colorHeart();
-                    }
-                    
+                {                    
                     tempI--;
                     numberOfSteps--;
                     neighbor=getNeighbor(direction, tempI, jPos);
@@ -71,16 +62,7 @@ public class Szabi extends GameObject{
             case Le:
                 neighbor=getNeighbor(direction, tempI, jPos);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
-                {
-                    if(neighbor instanceof Heart)
-                    {
-                       ((Heart)neighbor).colorHeart();
-                    }
-                    
-                    if(neighbor instanceof PaintBucket)
-                    {
-                        this.setColor(((PaintBucket)neighbor).getCode());
-                    }
+                {                    
                     tempI++;
                     numberOfSteps++;
                     neighbor=getNeighbor(direction, tempI, jPos);
@@ -116,17 +98,7 @@ public class Szabi extends GameObject{
             case Jobbra:                 
                 neighbor=getNeighbor(direction, iPos, tempJ);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
-                {
-                    if(neighbor instanceof Heart)
-                    {
-                       ((Heart)neighbor).colorHeart();
-                    }
-                    
-                    if(neighbor instanceof PaintBucket)
-                    {
-                        this.setColor(((PaintBucket)neighbor).getCode());
-                    }
-                    
+                {                                       
                     tempJ++;
                     numberOfSteps++;
                     neighbor=getNeighbor(direction, iPos, tempJ);
@@ -147,17 +119,7 @@ public class Szabi extends GameObject{
             case Balra:
                 neighbor=getNeighbor(direction, iPos, tempJ);
                 while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
-                {
-                    if(neighbor instanceof Heart)
-                    {
-                       ((Heart)neighbor).colorHeart();
-                    }
-                    
-                    if(neighbor instanceof PaintBucket)
-                    {
-                        this.setColor(((PaintBucket)neighbor).getCode());
-                    }
-                    
+                {                                        
                     tempJ--;
                     numberOfSteps--;
                     neighbor=getNeighbor(direction, iPos, tempJ);
@@ -287,22 +249,13 @@ public class Szabi extends GameObject{
         return newDirection;
     }
     
-    private void setColor(String cod)
+    public void setColor(Helpers.Enums.Color color)
     {
-        switch(cod)
-        {
-            case "fp":
-                this.color=Helpers.Enums.Color.Red;
-                break;
-            case "fz":
-                this.color=Helpers.Enums.Color.Green;
-                break;
-            case "fk":
-                this.color=Helpers.Enums.Color.Blue;
-                break;
-            case "fl":
-                this.color=Helpers.Enums.Color.Purple;
-                break;
-        }
+        this.color=color;
+    }
+    
+    public Helpers.Enums.Color getColor()
+    {
+        return this.color;
     }
 }
