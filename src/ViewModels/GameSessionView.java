@@ -6,13 +6,12 @@
 package ViewModels;
 
 import Helpers.Enums;
-import Listener.HeartColoringListener;
 import Models.BigHeart;
 import Models.GameObject;
 import Models.GameSession;
 import Models.Heart;
 import Models.PaintBucket;
-import Models.Szabi;
+import Models.SzabiDenia;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.animation.PathTransition;
@@ -39,7 +38,7 @@ import javafx.util.Duration;
  *
  * @author tibor.wekerle
  */
-public class GameSessionView extends HBox implements HeartColoringListener{
+public class GameSessionView extends HBox{
     private GridPane grid=new GridPane();
     private int fromAngel=0,toAngel = 0,height=0,width;
     private GameSession gameSession=null;
@@ -138,32 +137,21 @@ public class GameSessionView extends HBox implements HeartColoringListener{
     {
         GameObject szabi=gameSession.getSzabi();
         ImageView szabiImageView=gameObjectImageViewMap.get(szabi);
-        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(1000),szabiImageView );
+        szabiImageView.toFront();
         
-        
-        
-       // translateTransition.play();
-        
-       // Helpers.Enums.Irany oldIrany=irany;
-        translateTransition.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //Helpers.Enums.Irany newIrany=GameSessionView.this.gameSession.getNewIrany(oldIrany);
-                //if(newIrany!=null)
-               // {
-                    //GameSessionView.this.simulateNextStep(newIrany);
-                //}
-            }
-        });
-            
         PathTransition pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.millis(1000));
         pathTransition.setPath(path);
         pathTransition.setNode(szabiImageView);
         pathTransition.setCycleCount(1);
-        pathTransition.play();
+        pathTransition.play(); 
         
-        
+        pathTransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                checkWin();
+            }
+        });
         
         szabiImageView.boundsInParentProperty().addListener(new ChangeListener<Bounds>() {
             @Override
@@ -178,7 +166,7 @@ public class GameSessionView extends HBox implements HeartColoringListener{
                     {
                         if(actualBounds.intersects(imageView.getBoundsInParent()))
                         {
-                            ((Szabi)szabi).setColor(((PaintBucket)imageViewGameObjectMap.get(imageView)).getColor());
+                            ((SzabiDenia)szabi).setColor(((PaintBucket)imageViewGameObjectMap.get(imageView)).getColor());
                         }
                     }
                     for(ImageView imageView:imageViewHearts)
@@ -187,7 +175,7 @@ public class GameSessionView extends HBox implements HeartColoringListener{
                         {
                             Heart heart=(Heart)imageViewGameObjectMap.get(imageView);
                            
-                            if(!heart.isColored() && ((Szabi)szabi).getColor()==heart.getColor())
+                            if(!heart.isColored() && ((SzabiDenia)szabi).getColor()==heart.getColor())
                             {
                                 heart.setColored(true);
                                 imageView.setImage(heart.getColoredImage());
@@ -198,18 +186,39 @@ public class GameSessionView extends HBox implements HeartColoringListener{
                     {
                         if(actualBounds.intersects(imageView.getBoundsInParent()))
                         {
-                            System.out.println("nagySziv");
+                            BigHeart bigHeart=(BigHeart)imageViewGameObjectMap.get(imageView);
+                            if(!bigHeart.isCollected())
+                            {
+                                grid.getChildren().remove(imageView);
+                                ((SzabiDenia)szabi).addColectedBigHeart();
+                                bigHeart.setIsCollected(true);
+                            }                            
                         }
                     }
             }
-        });
-        
-        
+        });              
     }
-     
-    @Override
-    public void heartColoring(Heart heart) {
-        ImageView currentImageView=gameObjectImageViewMap.get(heart);
-        currentImageView.setImage(new Image("/img/letraKicsi.png"));
+    
+    private boolean isAllColored()
+    {
+        for(ImageView imageView:imageViewHearts)
+        {
+            Heart heart=(Heart)imageViewGameObjectMap.get(imageView);
+
+            if(!heart.isColored())
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    private void checkWin()
+    {
+        if(isAllColored() &&  gameSession.getSzabi().allHeartsColected())
+        {
+            System.out.println("win");
+        }
     }
 }

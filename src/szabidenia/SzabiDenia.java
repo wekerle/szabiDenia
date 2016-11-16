@@ -18,27 +18,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Optional;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -70,73 +60,10 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
         primaryStage.setWidth(850);
         primaryStage.setHeight(650);
         
-        primaryStage.setTitle("Alkoholistak");
+        primaryStage.setTitle("Szabi&Denia");
         primaryStage.setScene(scene);
-        primaryStage.show();
-        
-        stage.setOnCloseRequest(confirmCloseEventHandler);
-                
-    }
-    
-    private EventHandler<WindowEvent> confirmCloseEventHandler = event -> 
-    {
-        boolean hasModification=false;
-        try
-        {
-           ByteArrayOutputStream bos=new ByteArrayOutputStream();
-           ObjectOutputStream memeoryOutStream = new ObjectOutputStream(bos);
-           memeoryOutStream.writeObject(aplicationModel);
-            
-           byte[] data=bos.toByteArray();
-           memeoryOutStream.close();
-           bos.close();
-           
-           if(data.length!=aplicationModelSerialized.length)
-           {
-               hasModification=true;
-           }else
-           {
-               for(int i=0;i<data.length;i++)
-               {
-                   if(data[i]!=aplicationModelSerialized[i])
-                   {
-                       hasModification=true;
-                       break;
-                   }
-               }
-           }
-               
-
-        }catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-        
-        
-        if(hasModification)
-        {
-            Alert closeConfirmation = new Alert(
-                Alert.AlertType.CONFIRMATION,                
-                        "Press Exit to close the application, or press Cancel to say on and go to save it."
-            );
-            Button exitButton = (Button) closeConfirmation.getDialogPane().lookupButton(
-                    ButtonType.OK
-            );
-            exitButton.setText("Exit");
-            closeConfirmation.setHeaderText(" You have some unsaved changes that will be lost if you decide to exit.\n Are you sure you want to exit?\n");
-            closeConfirmation.initModality(Modality.APPLICATION_MODAL);
-            closeConfirmation.initOwner(stage);
-
-            Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
-            if (!ButtonType.OK.equals(closeResponse.get())) 
-            {
-                event.consume();
-            }
-        }
-        
-    };
-
-    
+        primaryStage.show();                
+    }    
     /**
      * @param args the command line arguments
      */
@@ -180,8 +107,7 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
     }
     
     private void clickHome()
-    {              
-        setAplicationModelSerialized();       
+    {                  
         start(stage);      
     }
     
@@ -191,27 +117,10 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
         borderPane.setCenter(gameSessionView);      
     }
     
-    private void setAplicationModelSerialized()
-    {
-        try
-        {   
-            ByteArrayOutputStream bos=new ByteArrayOutputStream();
-            ObjectOutputStream memeoryOutStream = new ObjectOutputStream(bos);
-            memeoryOutStream.writeObject(aplicationModel);
-            aplicationModelSerialized=bos.toByteArray();
-            
-            memeoryOutStream.close();
-            bos.close();
-        }catch(IOException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
      private void clickSave()
      {       
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save IEEE Conference");
+        fileChooser.setTitle("Save Game");
 
         fileChooser.getExtensionFilters().addAll(
             new FileChooser.ExtensionFilter("ser", "*.ser")
@@ -243,7 +152,7 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
     private void clickLoad()
     {       
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Load IEEE Conference");
+        fileChooser.setTitle("Load Game");
 
         fileChooser.getExtensionFilters().addAll(
             new FileChooser.ExtensionFilter("ser", "*.ser")
@@ -254,7 +163,6 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
         {
             this.aplicationModel=fileToAplicationModel(file.getPath()); 
         } 
-        setAplicationModelSerialized();
         start(stage);
     }
     
@@ -275,7 +183,6 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
            return null;
         }catch(ClassNotFoundException c)
         {
-           System.out.println("Employee class not found");
            c.printStackTrace();
            return null;
         }

@@ -20,7 +20,7 @@ public class GameSession
     private GameObject[][] objects=null;
     private int levelNumber;
     private boolean lose=false;
-    private Szabi szabi=null;
+    private SzabiDenia szabi=null;
         
     public int getLevelNumber() 
     {
@@ -88,14 +88,12 @@ public class GameSession
                     case "fs":
                         gameObject=new Heart(matrix[i][j]);
                         break;
+                    case "de":
                     case "sz":
-                        gameObject=new Szabi();
-                        this.szabi=(Szabi)gameObject;
+                        gameObject=new SzabiDenia(matrix[i][j]);
+                        this.szabi=(SzabiDenia)gameObject;
                         this.szabi.setCurrentX(25);
                         this.szabi.setCurrentY(25);
-                        break;
-                    case "de":
-                        gameObject=new Denia();
                         break;
                     case "la":
                         gameObject=new Ladder();
@@ -130,7 +128,7 @@ public class GameSession
         return objects[x][y];
     }
         
-    public Szabi getSzabi()
+    public SzabiDenia getSzabi()
     {
         return szabi;
     }

@@ -68,7 +68,7 @@ public class DataCollector
         String[][] matrix2={
             //11x7
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
-            {"ww","zs","zs","zs","zs","zs","zs","zs","zs","sz","ww"},
+            {"ww","zs","zs","zs","zs","zs","zs","zs","zs","de","ww"},
             {"ww","zs","  ","  ","  ","ns","  ","  ","  ","la","ww"},
             {"ww","zs","  ","  ","  ","ns","  ","  ","  ","la","ww"},
             {"ww","zs","  ","  ","  ","ns","  ","  ","  ","la","ww"},
@@ -106,7 +106,7 @@ public class DataCollector
             {"ww","la","ls","ls","ls","ls","ls","la","ww"},
             {"ww","la","  ","ls","ls","ls","  ","la","ww"},
             {"  ","la","ns","wd","ww","wb","ns","la","  "},
-            {"ww","la","  ","  ","sz","  ","  ","la","ww"},
+            {"ww","la","  ","  ","de","  ","  ","la","ww"},
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww"},
         };
         LevelModel level4=new LevelModel(matrix4, 4, 4);
@@ -135,7 +135,7 @@ public class DataCollector
             {"  ","ww","ps","ps","ps","ww","  ","ww","ks","ks","ks","ww","  "},
             {"ww","ps","ps","ps","ps","ww","  ","ww","ks","ks","ks","ks","ww"},
             {"ww","ps","ps","fp","ps","  ","la","  ","ks","fk","ks","ks","ww"},
-            {"ww","ww","ww","ww","ww","  ","sz","  ","ww","ww","ww","ww","ww"},
+            {"ww","ww","ww","ww","ww","  ","de","  ","ww","ww","ww","ww","ww"},
             {"ww","zs","zs","zs","zs","  ","la","  ","ls","ls","ls","ls","ww"},
             {"ww","zs","zs","zs","zs","ww","ns","ww","ls","ls","ls","ls","ww"},
             {"  ","ww","zs","fz","zs","ww","ww","ww","ls","fl","ls","ww","  "},
@@ -166,7 +166,7 @@ public class DataCollector
             //17x8
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
             {"ww","wp","  ","fp","  ","fz","  ","wq","ww","wp","  ","fk","  ","fl","  ","wq","ww"},
-            {"ww","  ","  ","la","  ","la","  ","  ","sz","  ","  ","la","  ","la","  ","  ","ww"},
+            {"ww","  ","  ","la","  ","la","  ","  ","de","  ","  ","la","  ","la","  ","  ","ww"},
             {"ww","ww","  ","ks","  ","ps","  ","wq","ww","wp","  ","ls","  ","zs","  ","ww","ww"},
             {"ww","wp","  ","ks","  ","ps","  ","  ","ns","  ","  ","ls","  ","zs","  ","wq","ww"},
             {"ww","ns","  ","ks","  ","ps","  ","  ","ww","  ","  ","ls","  ","zs","  ","ns","ww"},
@@ -198,7 +198,7 @@ public class DataCollector
             {"ww","  ","  ","  ","ww","fp","  ","la","  ","ps","ps","ps","ps","  ","ww"},
             {"ww","  ","  ","zs","ww","ww","  ","  ","  ","ww","ww","ww","ww","  ","ww"},
             {"ww","  ","  ","zs","ww","  ","  ","  ","  ","wp","  ","  ","  ","  ","ww"},
-            {"ww","  ","ns","zs","  ","  ","  ","sz","  ","  ","  ","ww","ww","ww","ww"},
+            {"ww","  ","ns","zs","  ","  ","  ","de","  ","  ","  ","ww","ww","ww","ww"},
             {"  ","  ","  ","zs","ww","  ","ww","ww","ww","  ","  ","  ","ns","ks","  "},
             {"ww","  ","  ","zs","ww","  ","  ","  ","  ","  ","  ","  ","  ","ks","ww"},
             {"ww","  ","  ","  ","  ","  ","ns","  ","  ","  ","  ","fk","  ","ks","ww"},
@@ -236,7 +236,7 @@ public class DataCollector
             {"ww","ks","  ","  ","ks","ks","ks","  ","ns","  ","ps","ps","ps","la","  ","  ","ww"},
             {"ww","ks","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","la","ww","ps","ww"},
             {"ww","ks","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","la","  ","ps","ww"},
-            {"ww","ks","sz","  ","  ","  ","  ","  ","ns","  ","  ","  ","  ","la","  ","ps","ww"},
+            {"ww","ks","de","  ","  ","  ","  ","  ","ns","  ","  ","  ","  ","la","  ","ps","ww"},
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
         };
         LevelModel level12=new LevelModel(matrix12, 12, 12);
@@ -267,7 +267,7 @@ public class DataCollector
             {"ww","ps","  ","  ","  ","  ","wp","ps","ps","wq","wp","ps","wq","  ","ps","  ","ww"},
             {"ww","ps","wp","ps","ps","ns","ps","ps","ps","wb","ps","ps","ps","wq","ps","  ","ww"},
             {"ww","ps","ps","  ","wp","ps","ps","ps","ps","ps","ps","wq","ww","ps","ps","  ","ww"},
-            {"ww","ps","ps","ps","ps","ps","ps","sz","ps","wq","ps","ps","wp","ps","ps","wq","ww"},
+            {"ww","ps","ps","ps","ps","ps","ps","de","ps","wq","ps","ps","wp","ps","ps","wq","ww"},
             {"ww","ps","wb","ps","ps","ps","wd","ww","  ","ps","ps","ps","ns","ps","ps","ps","ww"},
             {"ww","fp","ps","wq","wb","ps","ps","wq","  ","ps","ps","wb","ps","ps","wd","ps","ww"},
             {"ww","ww","ps","ps","  ","  ","  ","wb","ps","wd","ps","wp","wd","ps","  ","ps","ww"},
@@ -305,7 +305,7 @@ public class DataCollector
             {"ww","ww","ww","ww","ww","ww","ww","  ","ww","ww","ww","  ","ww","ww","ww"},
             {"  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ns","  ","  ","  "},
             {"ww","ww","ww","ww","ww","ww","ww","  ","ww","ww","ww","  ","ww","ww","ww"},
-            {"ww","sz","ps","ps","ps","fk","ww","  ","ww","zs","zs","zs","zs","fl","ww"},
+            {"ww","de","ps","ps","ps","fk","ww","  ","ww","zs","zs","zs","zs","fl","ww"},
             {"ww","la","ps","ps","ps","ps","  ","ns","  ","zs","zs","zs","zs","la","ww"},
             {"ww","ps","ps","ps","ps","ps","ww","  ","ww","zs","zs","la","zs","zs","ww"},
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
@@ -334,7 +334,7 @@ public class DataCollector
         String[][] matrix18={
             //15x10
             {"  ","  ","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","  ","  ","  "},
-            {"  ","  ","  ","  ","  ","  ","  ","ww","sz","ww","  ","  ","  ","  ","  "},
+            {"  ","  ","  ","  ","  ","  ","  ","ww","de","ww","  ","  ","  ","  ","  "},
             {"  ","  ","  ","  ","  ","  ","ww","  ","la","ns","ww","  ","  ","  ","  "},
             {"  ","  ","  ","  ","  ","ww","  ","wd","  ","  ","  ","ww","  ","  ","  "},
             {"  ","  ","  ","  ","ww","fk","wd","  ","ns","  ","wb","wq","  ","  ","  "},
@@ -376,7 +376,7 @@ public class DataCollector
             {"ww","  ","  ","ww","  ","  ","  ","  ","  ","  ","  ","ww","  ","ww","  ","  ","  "},
             {"ww","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","ww","ns","  ","  ","  ","  "},
             {"ww","  ","  ","ww","ns","ls","ww","  ","  ","ww","  ","ww","  ","ww","ww","  ","ww"},
-            {"ww","sz","  ","  ","ls","ls","ww","fz","  ","ww","  ","  ","  ","ps","ps","ps","ww"},
+            {"ww","de","  ","  ","ls","ls","ww","fz","  ","ww","  ","  ","  ","ps","ps","ps","ww"},
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","ww","ww","ww","ww"},
         };
         LevelModel level20=new LevelModel(matrix20, 20, 20);
@@ -411,7 +411,7 @@ public class DataCollector
             {"ww","  ","  ","  ","wb","  ","  ","la","ww","la","  ","  ","wd","  ","  ","  ","ww"},
             {"ww","  ","  ","  ","fp","  ","  ","la","ww","la","  ","  ","fz","  ","  ","  ","ww"},
             {"ww","ps","ps","  ","  ","ps","  ","ps","  ","ps","  ","ps","  ","  ","ps","ps","ww"},
-            {"ww","wb","  ","zs","  ","  ","  ","  ","sz","  ","  ","  ","  ","ks","  ","wd","ww"},
+            {"ww","wb","  ","zs","  ","  ","  ","  ","de","  ","  ","  ","  ","ks","  ","wd","ww"},
             {"ww","ww","wb","zs","  ","wd","ww","ww","ww","ww","ww","wb","  ","ks","wd","ww","ww"},
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
         };
@@ -445,7 +445,7 @@ public class DataCollector
             {"ww","  ","la","ww","wp","ns","ks","ks","fk","ks","ww","ls","ww"},
             {"ww","ww","fp","la","ps","ps","ps","ps","ww","ls","ls","  ","  "},
             {"ww","ww","ww","la","  ","ww","ps","ps","  ","fz","ls","ls","ww"},
-            {"ww","sz","la","  ","ww","zs","ps","ww","  ","ww","ls","ls","  "},
+            {"ww","de","la","  ","ww","zs","ps","ww","  ","ww","ls","ls","  "},
             {"ww","ww","la","ww","ww","zs","ww","wp","ns","ww","ls","ls","ww"},
             {"ww","zs","la","zs","zs","la","ww","wb","  ","ls","ls","wd","  "},
             {"ww","  ","  ","  ","ww","  ","ww","  ","la","la","la","ww","ww"},
@@ -480,7 +480,7 @@ public class DataCollector
             {"ww","  ","ww","  ","fp","ww","ww","ww","ww","fp","ww","ww","ww","  ","  ","  ","ww"},
             {"ww","  ","ww","  ","wq","ww","ps","ps","  ","  ","  ","  ","ww","  ","ww","  ","ww"},
             {"ww","ps","ps","  ","la","ns","  ","wd","ww","ww","ww","  ","ww","  ","ww","ps","ww"},
-            {"ww","fp","ww","ww","  ","ww","  ","fp","ww","sz","  ","wd","ww","  ","ww","ps","ww"},
+            {"ww","fp","ww","ww","  ","ww","  ","fp","ww","de","  ","wd","ww","  ","ww","ps","ww"},
             {"ww","ww","ww","  ","ps","  ","  ","  ","ww","ww","ww","ww","wp","  ","ww","  ","ww"},
             {"ww","ww","ww","  ","ps","ww","  ","  ","wq","ww","  ","ns","  ","wp","  ","  ","ww"},
             {"ww","wp","  ","wd","ww","ww","ww","ww","  ","ww","ww","fp","ww","  ","ww","  ","ww"},
@@ -519,7 +519,7 @@ public class DataCollector
             {"  ","wb","  ","  ","ns","  ","  ","ls","  ","  ","  ","  ","  ","  ","wq"},
             {"wb","wq","  ","  ","wp","wq","  ","ls","wp","  ","wb","  ","fl","  ","  "},
             {"  ","  ","  ","  ","  ","  ","  ","ls","  ","wp","  ","la","wq","  ","  "},
-            {"wb","wd","wb","la","wd","wb","  ","sz","  ","wd","ww","wb","  ","  ","wd"},
+            {"wb","wd","wb","la","wd","wb","  ","de","  ","wd","ww","wb","  ","  ","wd"},
             {"  ","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","  ","  ","  ","  "},
         };
         LevelModel level28=new LevelModel(matrix28, 28, 28);
@@ -552,8 +552,8 @@ public class DataCollector
             {"  ","  ","  ","  ","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ww"},
             {"ww","wb","  ","wp","  ","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","la","ww"},
             {"ww","ns","la","  ","  ","  ","  ","  ","  ","  ","wb","  ","  ","  ","la","  ","ww"},
-            {"  ","  ","ps","ps","ps","ps","sz","ps","ps","ps","ps","ps","ps","ps","ps","ps","ww"},
-            {"ww","  ","ww","  ","ww","ww","  ","ww","ww","  ","ww","ww","ww","ww","ww","  ","ww"},
+            {"  ","  ","ps","ps","ps","ps","de","ps","ps","ps","ps","ps","ps","ps","ps","ps","ww"},
+            {"ww","  ","ww","  ","ww","ww","ww","ww","ww","  ","ww","ww","ww","ww","ww","  ","ww"},
         };
         LevelModel level30=new LevelModel(matrix30, 30, 30);
         levels.add(level30);

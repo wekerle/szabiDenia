@@ -15,11 +15,25 @@ import javafx.scene.shape.Path;
  *
  * @author tibor.wekerle
  */
-public class Szabi extends GameObject{
+public class SzabiDenia extends GameObject{
 
-    private Image image=new Image("/img/szabi.png");
+    private Image image=null;
     private Path path= null;
     private Helpers.Enums.Color color=null;
+    private int colectedBigHearts=0;
+    
+    public SzabiDenia(String cod)
+    {
+        switch(cod)
+        {
+            case "sz":
+                image=new Image("/img/szabi.png");
+                break;
+            case "de":
+                image=new Image("/img/denia.png");
+                break;
+        }
+    }
     
     @Override
     public Image getImage() 
@@ -257,5 +271,15 @@ public class Szabi extends GameObject{
     public Helpers.Enums.Color getColor()
     {
         return this.color;
+    }
+    
+    public void addColectedBigHeart()
+    {
+        colectedBigHearts++;
+    }
+    
+    public boolean allHeartsColected()
+    {
+        return this.colectedBigHearts==3;
     }
 }

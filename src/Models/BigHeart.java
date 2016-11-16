@@ -14,11 +14,22 @@ import javafx.scene.image.Image;
 public class BigHeart extends GameObject{
 
     private Image image=new Image("/img/forgoSziv.gif");
+    private boolean isCollected=false;
     
     @Override
     public Image getImage() 
     {
         return image;
+    }
+    
+    public boolean isCollected()
+    {
+        return this.isCollected;
+    }
+    
+    public void setIsCollected(boolean isCollected)
+    {
+        this.isCollected=isCollected;
     }
     
 }
