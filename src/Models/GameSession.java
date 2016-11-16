@@ -1,8 +1,5 @@
 package Models;
 
-import Helpers.Enums;
-import java.util.ArrayList;
-import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 
 /*
@@ -19,8 +16,7 @@ public class GameSession
 {
     private GameObject[][] objects=null;
     private int levelNumber;
-    private boolean lose=false;
-    private SzabiDenia szabi=null;
+    private SzabiDenia szabiDenia=null;
         
     public int getLevelNumber() 
     {
@@ -91,9 +87,9 @@ public class GameSession
                     case "de":
                     case "sz":
                         gameObject=new SzabiDenia(matrix[i][j]);
-                        this.szabi=(SzabiDenia)gameObject;
-                        this.szabi.setCurrentX(25);
-                        this.szabi.setCurrentY(25);
+                        this.szabiDenia=(SzabiDenia)gameObject;
+                        this.szabiDenia.setCurrentX(25);
+                        this.szabiDenia.setCurrentY(25);
                         break;
                     case "la":
                         gameObject=new Ladder();
@@ -128,9 +124,9 @@ public class GameSession
         return objects[x][y];
     }
         
-    public SzabiDenia getSzabi()
+    public SzabiDenia getSzabiDenia()
     {
-        return szabi;
+        return szabiDenia;
     }
     
     public void simulateNextStepOnSession(int numberStepsI,int numberStepsJ,Helpers.Enums.Direction direction)
@@ -139,8 +135,8 @@ public class GameSession
         {
             return;
         }
-        int i=szabi.getCurrentI();
-        int j=szabi.getCurrentJ();
+        int i=szabiDenia.getCurrentI();
+        int j=szabiDenia.getCurrentJ();
         GameObject temp=objects[i][j];
         objects[i][j]=objects[i+numberStepsI][j+numberStepsJ];
         objects[i+numberStepsI][j+numberStepsJ]=temp;
@@ -148,6 +144,6 @@ public class GameSession
         
     public Path constrcutPath(Helpers.Enums.Direction direction)
     {
-        return szabi.constructPath(direction);
+        return szabiDenia.constructPath(direction);
     }
 }

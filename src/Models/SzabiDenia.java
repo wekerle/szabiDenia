@@ -6,6 +6,7 @@
 package Models;
 
 import Helpers.Enums;
+import static java.lang.Math.abs;
 import javafx.scene.image.Image;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -19,6 +20,7 @@ public class SzabiDenia extends GameObject{
 
     private Image image=null;
     private Path path= null;
+    private int numberOfStepsInPath=0;
     private Helpers.Enums.Color color=null;
     private int colectedBigHearts=0;
     
@@ -181,9 +183,11 @@ public class SzabiDenia extends GameObject{
         {
             this.path=new Path(new MoveTo(this.getCurrentX(),this.getCurrentY()));
         }
-
+        
         int numberOfStepsI=getNumberOfStepsI(direction, this.currentI, this.currentJ);
         int numberOfStepsJ=getNumberOfStepsJ(direction, this.currentI, this.currentJ);
+        
+        numberOfStepsInPath=numberOfStepsInPath+abs(numberOfStepsI)+abs(numberOfStepsJ);
         
         if(numberOfStepsJ !=0 && (direction==Enums.Direction.Balra || direction==Enums.Direction.Jobbra))
         {
@@ -214,6 +218,7 @@ public class SzabiDenia extends GameObject{
     public void destroyPath()
     {
         this.path=null;
+        this.numberOfStepsInPath=0;
     }
     
     public Helpers.Enums.Direction getNewDirection(Helpers.Enums.Direction oldDirection,String cod)
@@ -281,5 +286,10 @@ public class SzabiDenia extends GameObject{
     public boolean allHeartsColected()
     {
         return this.colectedBigHearts==3;
+    }
+    
+    public int numberOfStepsInPath()
+    {
+        return this.numberOfStepsInPath;
     }
 }

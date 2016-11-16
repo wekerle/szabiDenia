@@ -14,24 +14,20 @@ import Models.PaintBucket;
 import Models.SzabiDenia;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.animation.Animation;
 import javafx.animation.PathTransition;
-import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
-import javafx.geometry.Insets;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.shape.Path;
-import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 /**
@@ -47,6 +43,7 @@ public class GameSessionView extends HBox{
     private ArrayList<ImageView> imageViewHearts=new ArrayList<ImageView>();
     private ArrayList<ImageView> imageViewPaintBuckets=new ArrayList<ImageView>();
     private ArrayList<ImageView> imageViewBigHearts=new ArrayList<ImageView>();
+    private PathTransition pathTransition = new PathTransition();
         
     public GameSessionView(GameSession gameSession)
     {
@@ -59,34 +56,37 @@ public class GameSessionView extends HBox{
             @Override
             public void handle(KeyEvent event) 
             {
-                Helpers.Enums.Direction direction=null;
-                if (event.getCode() == KeyCode.DOWN) 
+                if(pathTransition.getStatus()==Animation.Status.STOPPED)
                 {
-                    direction=Enums.Direction.Le;
-                }
-                if (event.getCode() == KeyCode.UP) 
-                {
-                    direction=Enums.Direction.Fel;
-                }
-                if (event.getCode() == KeyCode.LEFT) 
-                {
-                    direction=Enums.Direction.Balra;
-                }
-                if (event.getCode() == KeyCode.RIGHT) 
-                {
-                    direction=Enums.Direction.Jobbra;
-                }
-                if(direction !=null)
-                {
-                    simulateNextStep(direction);                   
-                }
+                    Helpers.Enums.Direction direction=null;
+                    if (event.getCode() == KeyCode.DOWN) 
+                    {
+                        direction=Enums.Direction.Le;
+                    }
+                    if (event.getCode() == KeyCode.UP) 
+                    {
+                        direction=Enums.Direction.Fel;
+                    }
+                    if (event.getCode() == KeyCode.LEFT) 
+                    {
+                        direction=Enums.Direction.Balra;
+                    }
+                    if (event.getCode() == KeyCode.RIGHT) 
+                    {
+                        direction=Enums.Direction.Jobbra;
+                    }
+                    if(direction !=null)
+                    {                        
+                        simulateNextStep(direction);                   
+                    }
+                }                
             }
         });
     }   
     
     private void simulateNextStep(Helpers.Enums.Direction direction)
     {
-        gameSession.getSzabi().destroyPath();
+        gameSession.getSzabiDenia().destroyPath();
         Path path=gameSession.constrcutPath(direction);
         GameSessionView.this.simulateNextStepOnView(path);       
     }
@@ -135,30 +135,31 @@ public class GameSessionView extends HBox{
     
     private void simulateNextStepOnView(Path path)
     {
-        GameObject szabi=gameSession.getSzabi();
-        ImageView szabiImageView=gameObjectImageViewMap.get(szabi);
-        szabiImageView.toFront();
+        GameObject szabiDenia=gameSession.getSzabiDenia();
+        ImageView szabiDeniaImageView=gameObjectImageViewMap.get(szabiDenia);
+        szabiDeniaImageView.toFront();
         
-        PathTransition pathTransition = new PathTransition();
-        pathTransition.setDuration(Duration.millis(1000));
+        long durationInMillis=((SzabiDenia)szabiDenia).numberOfStepsInPath()*100;
+        
+        pathTransition.setDuration(Duration.millis(durationInMillis));
         pathTransition.setPath(path);
-        pathTransition.setNode(szabiImageView);
+        pathTransition.setNode(szabiDeniaImageView);
         pathTransition.setCycleCount(1);
-        pathTransition.play(); 
-        
+        pathTransition.play();
+                
         pathTransition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                checkWin();
+                checkWin();              
             }
         });
         
-        szabiImageView.boundsInParentProperty().addListener(new ChangeListener<Bounds>() {
+        szabiDeniaImageView.boundsInParentProperty().addListener(new ChangeListener<Bounds>() {
             @Override
             public void changed(ObservableValue<? extends Bounds> observable,
                     Bounds oldValue, Bounds newValue) {
                 
-                    Bounds boundsInParent = szabiImageView.getBoundsInParent();
+                    Bounds boundsInParent = szabiDeniaImageView.getBoundsInParent();
                     Bounds actualBounds = new BoundingBox(boundsInParent.getMinX()+1, boundsInParent.getMinY()+1,
                     boundsInParent.getWidth()-2, boundsInParent.getHeight()-2);
                 
@@ -166,7 +167,7 @@ public class GameSessionView extends HBox{
                     {
                         if(actualBounds.intersects(imageView.getBoundsInParent()))
                         {
-                            ((SzabiDenia)szabi).setColor(((PaintBucket)imageViewGameObjectMap.get(imageView)).getColor());
+                            ((SzabiDenia)szabiDenia).setColor(((PaintBucket)imageViewGameObjectMap.get(imageView)).getColor());
                         }
                     }
                     for(ImageView imageView:imageViewHearts)
@@ -175,7 +176,7 @@ public class GameSessionView extends HBox{
                         {
                             Heart heart=(Heart)imageViewGameObjectMap.get(imageView);
                            
-                            if(!heart.isColored() && ((SzabiDenia)szabi).getColor()==heart.getColor())
+                            if(!heart.isColored() && ((SzabiDenia)szabiDenia).getColor()==heart.getColor())
                             {
                                 heart.setColored(true);
                                 imageView.setImage(heart.getColoredImage());
@@ -190,7 +191,7 @@ public class GameSessionView extends HBox{
                             if(!bigHeart.isCollected())
                             {
                                 grid.getChildren().remove(imageView);
-                                ((SzabiDenia)szabi).addColectedBigHeart();
+                                ((SzabiDenia)szabiDenia).addColectedBigHeart();
                                 bigHeart.setIsCollected(true);
                             }                            
                         }
@@ -216,7 +217,7 @@ public class GameSessionView extends HBox{
     
     private void checkWin()
     {
-        if(isAllColored() &&  gameSession.getSzabi().allHeartsColected())
+        if(isAllColored() &&  gameSession.getSzabiDenia().allHeartsColected())
         {
             System.out.println("win");
         }
