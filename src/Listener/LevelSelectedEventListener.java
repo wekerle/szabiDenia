@@ -10,7 +10,7 @@ package Listener;
  *
  * @author tibor.wekerle
  */
-public interface LevelClickEventListener 
+public interface LevelSelectedEventListener 
 {
     void levelSelected(int levelId);
 }

@@ -6,6 +6,7 @@
 package ViewModels;
 
 import Helpers.Enums;
+import Listener.LevelFinishedEventListener;
 import Models.BigHeart;
 import Models.GameObject;
 import Models.GameSession;
@@ -44,6 +45,12 @@ public class GameSessionView extends HBox{
     private ArrayList<ImageView> imageViewPaintBuckets=new ArrayList<ImageView>();
     private ArrayList<ImageView> imageViewBigHearts=new ArrayList<ImageView>();
     private PathTransition pathTransition = new PathTransition();
+    private LevelFinishedEventListener levelFinishedEvent=null;
+    
+    public void setLevelFinishedEventListener(LevelFinishedEventListener levelFinishedEvent) 
+    {
+        this.levelFinishedEvent = levelFinishedEvent;
+    }
         
     public GameSessionView(GameSession gameSession)
     {
@@ -219,7 +226,7 @@ public class GameSessionView extends HBox{
     {
         if(isAllColored() &&  gameSession.getSzabiDenia().allHeartsColected())
         {
-            System.out.println("win");
+            levelFinishedEvent.levelFinished(this.gameSession.getLevelNumber());
         }
     }
 }

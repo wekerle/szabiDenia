@@ -121,7 +121,7 @@ public class DataCollector
             {"ww","ps","ww","ps","ww","zs","ww","zs","ww"},
             {"ww","la","ps","ps","ns","zs","zs","  ","ww"},
             {"ww","  ","ww","ps","ww","zs","ww","  ","ww"},
-            {"ww","fz","  ","  ","la","  ","  ","sz","ww"},
+            {"ww","fz","  ","la","  ","  ","  ","sz","ww"},
             {"ww","ww","ww","ww","ww","ww","ww","ww","ww"},
         };
         LevelModel level5=new LevelModel(matrix5, 5, 5);

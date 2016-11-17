@@ -5,7 +5,7 @@
  */
 package ViewModels;
 
-import Listener.LevelClickEventListener;
+import Listener.LevelSelectedEventListener;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
@@ -21,11 +21,11 @@ import javafx.scene.text.Text;
 public class MinimalLevelView extends HBox{
     private int levelId;
     private int levelNumber;
-    private LevelClickEventListener levelClickEvent=null;
+    private LevelSelectedEventListener levelSelectedEvent=null;
 
-    public void setLevelClickEventListener(LevelClickEventListener levelClickEvent) 
+    public void setLevelSelectedEventListener(LevelSelectedEventListener levelSelectedEvent) 
     {
-        this.levelClickEvent = levelClickEvent;
+        this.levelSelectedEvent = levelSelectedEvent;
     }
     
     public MinimalLevelView(int levelId,int levelNumber)
@@ -37,7 +37,7 @@ public class MinimalLevelView extends HBox{
         this.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                MinimalLevelView.this.levelClickEvent.levelSelected(levelId);
+                MinimalLevelView.this.levelSelectedEvent.levelSelected(levelId);
             }
         });
     }

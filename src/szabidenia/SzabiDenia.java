@@ -5,13 +5,14 @@
  */
 package szabidenia;
 
-import Listener.LevelClickEventListener;
+import Listener.LevelFinishedEventListener;
+import Listener.LevelSelectedEventListener;
 import Models.AplicationModel;
 import Models.GameSession;
 import Models.LevelModel;
+import ViewModels.FinishLevelView;
 import ViewModels.GameSessionView;
 import ViewModels.MinimalLevelView;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -36,7 +37,7 @@ import javafx.stage.WindowEvent;
  *
  * @author tibor.wekerle
  */
-public class SzabiDenia extends Application implements LevelClickEventListener{
+public class SzabiDenia extends Application implements LevelSelectedEventListener,LevelFinishedEventListener{
     
     private BorderPane borderPane = new BorderPane();
     private AplicationModel aplicationModel=new AplicationModel();
@@ -114,6 +115,7 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
     private void renderLevel(GameSession gameSession)
     {
         GameSessionView gameSessionView=new GameSessionView(gameSession);
+        gameSessionView.setLevelFinishedEventListener(this);
         borderPane.setCenter(gameSessionView);      
     }
     
@@ -197,7 +199,7 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
         for(LevelModel level :aplicationModel.getLevels())
         {
             MinimalLevelView minimalLevel= new MinimalLevelView(level.getLevelId(), level.getLevelNumber());
-            minimalLevel.setLevelClickEventListener(this);
+            minimalLevel.setLevelSelectedEventListener(this);
             grid.add(minimalLevel,j,i);
             
             j++;
@@ -218,6 +220,13 @@ public class SzabiDenia extends Application implements LevelClickEventListener{
     {
         GameSession gameSession=new GameSession(aplicationModel.getLevelById(levelId));
         renderLevel(gameSession);
+    }
+
+    @Override
+    public void levelFinished(int levelId) {
+        FinishLevelView finishLevelView=new FinishLevelView(levelId);
+        finishLevelView.setLevelSelectedEventListener(this);
+        borderPane.setCenter(finishLevelView);
     }
     
 }
