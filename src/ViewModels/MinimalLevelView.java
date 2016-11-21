@@ -8,6 +8,8 @@ package ViewModels;
 import Listener.LevelSelectedEventListener;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -28,26 +30,45 @@ public class MinimalLevelView extends HBox{
         this.levelSelectedEvent = levelSelectedEvent;
     }
     
-    public MinimalLevelView(int levelId,int levelNumber)
+    public MinimalLevelView(int levelId,int levelNumber,int maxSolvedLevel)
     {
         this.levelId=levelId;
         this.levelNumber=levelNumber;
-        populateContent();
+        populateContent(maxSolvedLevel);
         
         this.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                MinimalLevelView.this.levelSelectedEvent.levelSelected(levelId);
+                if(!MinimalLevelView.this.getStyleClass().contains("disabledMinimalLevelView"))
+                {
+                    MinimalLevelView.this.levelSelectedEvent.levelSelected(levelId);
+                }              
             }
         });
     }
     
-    private void populateContent()
-    {
-        this.getStyleClass().add("minimalLevelView");
+    private void populateContent(int maxSolvedLevel)
+    {        
         Text levelNumberText=new Text(Integer.toString(levelNumber));
         levelNumberText.setFont(Font.font("TimesNewRoman",FontWeight.BOLD,40));
         this.setAlignment(Pos.CENTER);
+        
+        ImageView imageView=null;
+        if(maxSolvedLevel>this.levelNumber)
+        {
+            imageView=new ImageView(new Image("/img/check.png"));
+            this.getStyleClass().add("minimalLevelView");
+        }else if(maxSolvedLevel==this.levelNumber)
+        {
+            imageView=new ImageView(new Image("/img/current.png"));
+            this.getStyleClass().add("minimalLevelView");
+        }else
+        {
+            imageView=new ImageView(new Image("/img/denied.png"));
+            this.getStyleClass().add("disabledMinimalLevelView");
+        }
+                
+        this.getChildren().add(imageView);
         this.getChildren().add(levelNumberText);
     }
 }

@@ -5,15 +5,16 @@
  */
 package Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author tibor.wekerle
  */
-public class AplicationModel {
+public class AplicationModel implements Serializable{
     private ArrayList<LevelModel> levels=new ArrayList<LevelModel>();
-    private int currentLevel=1;
+    private int maxSolvedLevel=1;
 
     public ArrayList<LevelModel> getLevels() 
     {
@@ -30,6 +31,27 @@ public class AplicationModel {
         for(LevelModel level:levels)
         {
             if(level.getLevelId()==levelId)
+            {
+                return level;
+            }
+        }
+        return null;
+    }
+    
+    public int getMaxSolvedLevel()
+    {
+        return this.maxSolvedLevel;
+    }
+    
+    public void setMaxSolvedLevel(int levelNr)
+    {
+        this.maxSolvedLevel=levelNr;
+    }
+
+    public LevelModel getLevelByNr(int levelNr) {
+        for(LevelModel level:levels)
+        {
+            if(level.getLevelNumber()==levelNr)
             {
                 return level;
             }

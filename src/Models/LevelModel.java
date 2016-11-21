@@ -5,11 +5,13 @@
  */
 package Models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tibor.wekerle
  */
-public class LevelModel {
+public class LevelModel implements Serializable{
     private String[][] matrix;
     private int levelNumber;
     private int levelId;

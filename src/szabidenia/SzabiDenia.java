@@ -198,7 +198,7 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
         int j=0;
         for(LevelModel level :aplicationModel.getLevels())
         {
-            MinimalLevelView minimalLevel= new MinimalLevelView(level.getLevelId(), level.getLevelNumber());
+            MinimalLevelView minimalLevel= new MinimalLevelView(level.getLevelId(), level.getLevelNumber(),aplicationModel.getMaxSolvedLevel());
             minimalLevel.setLevelSelectedEventListener(this);
             grid.add(minimalLevel,j,i);
             
@@ -216,15 +216,27 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
     }
 
     @Override
-    public void levelSelected(int levelId) 
+    public void levelSelected(int levelNr) 
     {
-        GameSession gameSession=new GameSession(aplicationModel.getLevelById(levelId));
-        renderLevel(gameSession);
+        if(levelNr==0)
+        {
+            start(stage);
+        }else
+        {
+            LevelModel level=aplicationModel.getLevelByNr(levelNr);
+            GameSession gameSession=new GameSession(level);
+            renderLevel(gameSession);
+        }       
     }
 
     @Override
-    public void levelFinished(int levelId) {
-        FinishLevelView finishLevelView=new FinishLevelView(levelId);
+    public void levelFinished(int levelNr) {
+        
+        if(this.aplicationModel.getMaxSolvedLevel()<levelNr+1)
+        {
+            this.aplicationModel.setMaxSolvedLevel(levelNr+1);
+        }
+        FinishLevelView finishLevelView=new FinishLevelView(levelNr);
         finishLevelView.setLevelSelectedEventListener(this);
         borderPane.setCenter(finishLevelView);
     }

@@ -30,6 +30,7 @@ public class FinishLevelView extends HBox {
     
     public FinishLevelView(int previousLevelNr)
     {
+        // this "if" is a temporary hardcode
         if(previousLevelNr<6)
         {
             ImageView imageView=new ImageView(getImageByLevelNumber(previousLevelNr));
@@ -41,10 +42,21 @@ public class FinishLevelView extends HBox {
         
         buttonNext.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-
             @Override
             public void handle(MouseEvent event) {
                 levelSelectedEvent.levelSelected(previousLevelNr+1);
+            }
+        });
+        
+        Image imageHome=new Image("/img/home.png");
+        Button buttonHome=new Button("Home", new ImageView(imageHome));  
+        
+        buttonHome.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+
+            @Override
+            public void handle(MouseEvent event) {
+                levelSelectedEvent.levelSelected(0);
             }
         });
         
@@ -61,6 +73,7 @@ public class FinishLevelView extends HBox {
         });
         
         HBox footerNode=new HBox();
+        footerNode.getChildren().add(buttonHome);
         footerNode.getChildren().add(buttonRestart);
         footerNode.getChildren().add(buttonNext);
         footerNode.setAlignment(Pos.CENTER);
