@@ -10,7 +10,7 @@ package Listener;
  *
  * @author tibor.wekerle
  */
-public interface LevelFinishedEventListener 
+public interface LevelFailedEventListener 
 {
-    void levelFinished(int levelNr);
+    void levelFailed(int levelNr);
 }

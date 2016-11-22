@@ -12,5 +12,5 @@ package Listener;
  */
 public interface LevelSelectedEventListener 
 {
-    void levelSelected(int levelId);
+    void levelSelected(int levelNr);
 }

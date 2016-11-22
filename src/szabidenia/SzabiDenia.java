@@ -5,11 +5,13 @@
  */
 package szabidenia;
 
+import Listener.LevelFailedEventListener;
 import Listener.LevelFinishedEventListener;
 import Listener.LevelSelectedEventListener;
 import Models.AplicationModel;
 import Models.GameSession;
 import Models.LevelModel;
+import ViewModels.FailLevelView;
 import ViewModels.FinishLevelView;
 import ViewModels.GameSessionView;
 import ViewModels.MinimalLevelView;
@@ -37,12 +39,11 @@ import javafx.stage.WindowEvent;
  *
  * @author tibor.wekerle
  */
-public class SzabiDenia extends Application implements LevelSelectedEventListener,LevelFinishedEventListener{
+public class SzabiDenia extends Application implements LevelSelectedEventListener,LevelFinishedEventListener,LevelFailedEventListener{
     
     private BorderPane borderPane = new BorderPane();
     private AplicationModel aplicationModel=new AplicationModel();
     private Scene scene=new Scene(borderPane);
-    private byte[] aplicationModelSerialized;
     private Stage stage=null;
     
     @Override
@@ -59,7 +60,7 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
         scene.getStylesheets().add("Styling/styles.css");
                                                      
         primaryStage.setWidth(850);
-        primaryStage.setHeight(650);
+        primaryStage.setHeight(680);
         
         primaryStage.setTitle("Szabi&Denia");
         primaryStage.setScene(scene);
@@ -116,6 +117,7 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
     {
         GameSessionView gameSessionView=new GameSessionView(gameSession);
         gameSessionView.setLevelFinishedEventListener(this);
+        gameSessionView.setLevelFailedEventListener(this);
         borderPane.setCenter(gameSessionView);      
     }
     
@@ -239,6 +241,13 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
         FinishLevelView finishLevelView=new FinishLevelView(levelNr);
         finishLevelView.setLevelSelectedEventListener(this);
         borderPane.setCenter(finishLevelView);
+    }
+
+    @Override
+    public void levelFailed(int levelNr) {
+        FailLevelView failLevelView=new FailLevelView(levelNr);
+        failLevelView.setLevelSelectedEventListener(this);
+        borderPane.setCenter(failLevelView);
     }
     
 }

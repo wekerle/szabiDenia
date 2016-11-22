@@ -23,6 +23,24 @@ public class SzabiDenia extends GameObject{
     private int numberOfStepsInPath=0;
     private Helpers.Enums.Color color=null;
     private int colectedBigHearts=0;
+    private boolean lose=false;
+    
+    private boolean checkLevelFailed(int i, int j)
+    {
+        if(i<0 || i>=this.gameSession.getHeight())
+        {
+            this.lose=true;
+            return true;
+        }
+        
+        if(j<0 || j>=this.gameSession.getWidth())
+        {
+            this.lose=true;
+            return true;
+        }
+        
+        return false;
+    }
     
     public SzabiDenia(String cod)
     {
@@ -56,8 +74,8 @@ public class SzabiDenia extends GameObject{
                 break;
             case Fel:                 
                 neighbor=getNeighbor(direction, tempI, jPos);
-                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
-                {                    
+                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder) && neighbor!=null)
+                {   
                     tempI--;
                     numberOfSteps--;
                     neighbor=getNeighbor(direction, tempI, jPos);
@@ -77,7 +95,7 @@ public class SzabiDenia extends GameObject{
                 break;
             case Le:
                 neighbor=getNeighbor(direction, tempI, jPos);
-                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
+                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder)&& neighbor!=null)
                 {                    
                     tempI++;
                     numberOfSteps++;
@@ -113,7 +131,7 @@ public class SzabiDenia extends GameObject{
                 break;
             case Jobbra:                 
                 neighbor=getNeighbor(direction, iPos, tempJ);
-                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
+                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder)&& neighbor!=null)
                 {                                       
                     tempJ++;
                     numberOfSteps++;
@@ -134,10 +152,10 @@ public class SzabiDenia extends GameObject{
                 break;
             case Balra:
                 neighbor=getNeighbor(direction, iPos, tempJ);
-                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder))
+                while(!(neighbor instanceof Wall)&&!(neighbor instanceof Ladder)&& neighbor!=null)
                 {                                        
                     tempJ--;
-                    numberOfSteps--;
+                    numberOfSteps--;                    
                     neighbor=getNeighbor(direction, iPos, tempJ);
                 }
                 
@@ -173,6 +191,10 @@ public class SzabiDenia extends GameObject{
             case Balra:
                 j--;
                 break;
+        }
+        if(checkLevelFailed(i, j))
+        {
+            return null;
         }
         return gameSession.getGameObjectAt(i,j);
     }
@@ -291,5 +313,10 @@ public class SzabiDenia extends GameObject{
     public int numberOfStepsInPath()
     {
         return this.numberOfStepsInPath;
+    }
+    
+    public boolean getLose()
+    {
+        return this.lose;
     }
 }

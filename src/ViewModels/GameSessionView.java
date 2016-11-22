@@ -6,6 +6,7 @@
 package ViewModels;
 
 import Helpers.Enums;
+import Listener.LevelFailedEventListener;
 import Listener.LevelFinishedEventListener;
 import Models.BigHeart;
 import Models.GameObject;
@@ -23,19 +24,24 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Path;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
  *
  * @author tibor.wekerle
  */
-public class GameSessionView extends HBox{
+public class GameSessionView extends VBox{
     private GridPane grid=new GridPane();
     private int fromAngel=0,toAngel = 0,height=0,width;
     private GameSession gameSession=null;
@@ -46,10 +52,24 @@ public class GameSessionView extends HBox{
     private ArrayList<ImageView> imageViewBigHearts=new ArrayList<ImageView>();
     private PathTransition pathTransition = new PathTransition();
     private LevelFinishedEventListener levelFinishedEvent=null;
+    private LevelFailedEventListener levelFailedEvent=null;
+    
+    private Image miniBucketRed=new Image("img/pirosVederMini.png");
+    private Image miniBucketBlue=new Image("img/kekVederMini.png");
+    private Image miniBucketPurple=new Image("img/lilaVederMini.png");
+    private Image miniBucketGreen=new Image("img/zoldVederMini.png");
+    private Image miniBucketNoColor=new Image("img/noColorMini.png");
+    
+    private ImageView imageViewCurrentColor=new ImageView(miniBucketNoColor);
     
     public void setLevelFinishedEventListener(LevelFinishedEventListener levelFinishedEvent) 
     {
         this.levelFinishedEvent = levelFinishedEvent;
+    }
+    
+    public void setLevelFailedEventListener(LevelFailedEventListener levelFailedEvent) 
+    {
+        this.levelFailedEvent = levelFailedEvent;
     }
         
     public GameSessionView(GameSession gameSession)
@@ -136,7 +156,21 @@ public class GameSessionView extends HBox{
                 imageViewGameObjectMap.put(imageView,gameObject);
             }
         }
-    
+        
+        Text textLevel=new Text("Level: "+ gameSession.getLevelNumber());
+        textLevel.setFont(Font.font("TimesNewRoman",FontWeight.BOLD,24));
+        
+        Text textColor=new Text("Color: ");
+        textColor.setFont(Font.font("TimesNewRoman",FontWeight.BOLD,24));
+                       
+        HBox hBoxTop= new HBox();
+        hBoxTop.getChildren().add(textLevel);
+         hBoxTop.getChildren().add(textColor);
+        hBoxTop.getChildren().add(imageViewCurrentColor);
+
+        hBoxTop.setSpacing(5);
+        
+        this.getChildren().add(hBoxTop);
         this.getChildren().add(grid);       
     }
     
@@ -157,7 +191,8 @@ public class GameSessionView extends HBox{
         pathTransition.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                checkWin();              
+                checkWin();
+                checkLose();
             }
         });
         
@@ -174,7 +209,9 @@ public class GameSessionView extends HBox{
                     {
                         if(actualBounds.intersects(imageView.getBoundsInParent()))
                         {
-                            ((SzabiDenia)szabiDenia).setColor(((PaintBucket)imageViewGameObjectMap.get(imageView)).getColor());
+                            Helpers.Enums.Color currentColor=((PaintBucket)imageViewGameObjectMap.get(imageView)).getColor();
+                            GameSessionView.this.setCurrentColor(currentColor);
+                            ((SzabiDenia)szabiDenia).setColor(currentColor);
                         }
                     }
                     for(ImageView imageView:imageViewHearts)
@@ -227,6 +264,33 @@ public class GameSessionView extends HBox{
         if(isAllColored() &&  gameSession.getSzabiDenia().allHeartsColected())
         {
             levelFinishedEvent.levelFinished(this.gameSession.getLevelNumber());
+        }
+    }
+    
+    private void checkLose()
+    {
+        if(this.gameSession.getSzabiDenia().getLose())
+        {
+            levelFailedEvent.levelFailed(this.gameSession.getLevelNumber());
+        }        
+    }
+    
+    private void setCurrentColor(Helpers.Enums.Color color)
+    {
+        switch(color)
+        {
+            case Red:
+                this.imageViewCurrentColor.setImage(miniBucketRed);
+                break;
+            case Blue:
+                this.imageViewCurrentColor.setImage(miniBucketBlue);
+                break;
+            case Green:
+                this.imageViewCurrentColor.setImage(miniBucketGreen);
+                break;
+            case Purple:
+                this.imageViewCurrentColor.setImage(miniBucketPurple);
+                break;
         }
     }
 }
