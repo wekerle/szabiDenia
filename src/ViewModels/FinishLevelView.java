@@ -7,7 +7,6 @@ package ViewModels;
 
 import Listener.LevelSelectedEventListener;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -31,7 +30,7 @@ public class FinishLevelView extends HBox {
     public FinishLevelView(int previousLevelNr)
     {
         // this "if" is a temporary hardcode
-        if(previousLevelNr<6)
+        if(previousLevelNr<13)
         {
             ImageView imageView=new ImageView(getImageByLevelNumber(previousLevelNr));
             contentNode.getChildren().add(imageView);
@@ -119,6 +118,66 @@ public class FinishLevelView extends HBox {
                 break;
             case 10:
                 image= new Image("/img/10.png");
+                break;
+            case 11:
+                image= new Image("/img/11.png");
+                break;
+            case 12:
+                image= new Image("/img/12.png");
+                break;
+            case 13:
+                image= new Image("/img/13.png");
+                break;
+            case 14:
+                image= new Image("/img/14.png");
+                break;
+            case 15:
+                image= new Image("/img/15.png");
+                break;
+            case 16:
+                image= new Image("/img/16.png");
+                break;
+            case 17:
+                image= new Image("/img/17.png");
+                break;
+            case 18:
+                image= new Image("/img/18.png");
+                break;
+            case 19:
+                image= new Image("/img/19.png");
+                break;
+            case 20:
+                image= new Image("/img/20.png");
+                break;
+            case 21:
+                image= new Image("/img/21.png");
+                break;
+            case 22:
+                image= new Image("/img/22.png");
+                break;
+            case 23:
+                image= new Image("/img/23.png");
+                break;
+            case 24:
+                image= new Image("/img/24.png");
+                break;
+            case 25:
+                image= new Image("/img/25.png");
+                break;
+            case 26:
+                image= new Image("/img/26.png");
+                break;
+            case 27:
+                image= new Image("/img/27.png");
+                break;
+            case 28:
+                image= new Image("/img/28.png");
+                break;
+            case 29:
+                image= new Image("/img/29.png");
+                break;
+            case 30:
+                image= new Image("/img/30.png");
                 break;
         }
         
