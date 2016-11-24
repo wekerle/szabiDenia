@@ -6,6 +6,9 @@
 package ViewModels;
 
 import Listener.LevelSelectedEventListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -14,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javax.swing.Timer;
+import static szabidenia.SzabiDenia.FINAL_LEVEL_NR;
 
 /**
  *
@@ -29,20 +36,45 @@ public class FinishLevelView extends HBox {
     
     public FinishLevelView(int previousLevelNr)
     {
+        HBox footerNode=new HBox();
+        
         ImageView imageView=new ImageView(getImageByLevelNumber(previousLevelNr));
         contentNode.getChildren().add(imageView);
-       
-        Image imageNext=new Image("/img/next.png");
-        Button buttonNext=new Button("Next Level", new ImageView(imageNext));
         
-        buttonNext.setOnMouseClicked(new EventHandler<MouseEvent>()
+        if(previousLevelNr==FINAL_LEVEL_NR)
         {
-            @Override
-            public void handle(MouseEvent event) {
-                levelSelectedEvent.levelSelected(previousLevelNr+1);
-            }
-        });
+            int delay = 3*1000; //milliseconds
+            int pictureNr=1;
+            ActionListener taskPerformer = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    imageView.setImage(getImageByLevelNumber(pictureNr));
+                    //pictureNr=pictureNr+1;
+                    if(pictureNr>FINAL_LEVEL_NR)
+                    {
+                        //pictureNr=1;
+                    }
+                }
+            };
+        new Timer(delay, taskPerformer).start();
+        }
+       
+        if(previousLevelNr<FINAL_LEVEL_NR)
+        {
+            Image imageNext=new Image("/img/next.png");
+            Button buttonNext=new Button("Next Level", new ImageView(imageNext));
         
+            buttonNext.setOnMouseClicked(new EventHandler<MouseEvent>()
+            {
+                @Override
+                public void handle(MouseEvent event) {
+                    levelSelectedEvent.levelSelected(previousLevelNr+1);
+                }
+            });
+            
+            footerNode.getChildren().add(buttonNext);
+        }
+               
         Image imageHome=new Image("/img/home.png");
         Button buttonHome=new Button("Home", new ImageView(imageHome));  
         
@@ -55,6 +87,8 @@ public class FinishLevelView extends HBox {
             }
         });
         
+        footerNode.getChildren().add(buttonHome);
+        
         Image imageRestart=new Image("/img/restart.png");
         Button buttonRestart=new Button("Restart Level", new ImageView(imageRestart));  
         
@@ -66,11 +100,8 @@ public class FinishLevelView extends HBox {
                 levelSelectedEvent.levelSelected(previousLevelNr);
             }
         });
-        
-        HBox footerNode=new HBox();
-        footerNode.getChildren().add(buttonHome);
+               
         footerNode.getChildren().add(buttonRestart);
-        footerNode.getChildren().add(buttonNext);
         footerNode.setAlignment(Pos.CENTER);
         footerNode.setSpacing(20);
         
@@ -78,8 +109,17 @@ public class FinishLevelView extends HBox {
         
         this.getChildren().add(contentNode);
         this.setAlignment(Pos.CENTER);
+        
+        if(previousLevelNr==FINAL_LEVEL_NR)
+        {
+            File file = new File("./src/media/randi.mp3");
+            final Media media = new Media(file.toURI().toString());
+            final MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+            mediaPlayer.play();
+        }
     }
-    
+        
     private Image getImageByLevelNumber(int previousLevelNumber)
     {
         Image image=null;

@@ -45,6 +45,7 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
     private AplicationModel aplicationModel=new AplicationModel();
     private Scene scene=new Scene(borderPane);
     private Stage stage=null;
+    public static final int FINAL_LEVEL_NR=30;
     
     @Override
     public void start(Stage primaryStage) 
@@ -54,8 +55,7 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
         
         MenuBar menuBar=createMenu();       
         borderPane.setTop(menuBar);  
-        //levelFinished(12);
-        borderPane.setCenter(getContent());
+        levelFinished(30);
         stage=primaryStage;
     
         scene.getStylesheets().add("Styling/styles.css");
