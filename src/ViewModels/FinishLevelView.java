@@ -29,12 +29,8 @@ public class FinishLevelView extends HBox {
     
     public FinishLevelView(int previousLevelNr)
     {
-        // this "if" is a temporary hardcode
-        if(previousLevelNr<13)
-        {
-            ImageView imageView=new ImageView(getImageByLevelNumber(previousLevelNr));
-            contentNode.getChildren().add(imageView);
-        }
+        ImageView imageView=new ImageView(getImageByLevelNumber(previousLevelNr));
+        contentNode.getChildren().add(imageView);
        
         Image imageNext=new Image("/img/next.png");
         Button buttonNext=new Button("Next Level", new ImageView(imageNext));

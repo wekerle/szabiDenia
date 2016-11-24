@@ -53,7 +53,8 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
         aplicationModel.setLevels(dataCollector.getLevels());
         
         MenuBar menuBar=createMenu();       
-        borderPane.setTop(menuBar);                 
+        borderPane.setTop(menuBar);  
+        //levelFinished(12);
         borderPane.setCenter(getContent());
         stage=primaryStage;
     
