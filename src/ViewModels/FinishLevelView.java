@@ -29,6 +29,7 @@ import static szabidenia.SzabiDenia.FINAL_LEVEL_NR;
 public class FinishLevelView extends HBox {
     private VBox contentNode=new VBox();
     private LevelSelectedEventListener levelSelectedEvent=null;
+    private int currentPictureNumberInLastFinishLevelView=1;
     public void setLevelSelectedEventListener(LevelSelectedEventListener levelSelectedEvent) 
     {
         this.levelSelectedEvent = levelSelectedEvent;
@@ -44,15 +45,14 @@ public class FinishLevelView extends HBox {
         if(previousLevelNr==FINAL_LEVEL_NR)
         {
             int delay = 3*1000; //milliseconds
-            int pictureNr=1;
             ActionListener taskPerformer = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    imageView.setImage(getImageByLevelNumber(pictureNr));
-                    //pictureNr=pictureNr+1;
-                    if(pictureNr>FINAL_LEVEL_NR)
+                    imageView.setImage(getImageByLevelNumber(currentPictureNumberInLastFinishLevelView));
+                    currentPictureNumberInLastFinishLevelView++;
+                    if(currentPictureNumberInLastFinishLevelView>FINAL_LEVEL_NR)
                     {
-                        //pictureNr=1;
+                        currentPictureNumberInLastFinishLevelView=1;
                     }
                 }
             };

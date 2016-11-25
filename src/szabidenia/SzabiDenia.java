@@ -55,7 +55,8 @@ public class SzabiDenia extends Application implements LevelSelectedEventListene
         
         MenuBar menuBar=createMenu();       
         borderPane.setTop(menuBar);  
-        levelFinished(30);
+        //levelFinished(30);
+        borderPane.setCenter(getContent());
         stage=primaryStage;
     
         scene.getStylesheets().add("Styling/styles.css");

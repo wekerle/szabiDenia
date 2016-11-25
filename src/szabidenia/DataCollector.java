@@ -262,18 +262,18 @@ public class DataCollector
         
         String[][] matrix14={
             //17x12
-            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
-            {"ww","wp","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","wq","  ","ww"},
-            {"ww","ps","  ","  ","  ","  ","wp","ps","ps","wq","wp","ps","wq","  ","ps","  ","ww"},
-            {"ww","ps","wp","ps","ps","ns","ps","ps","ps","wb","ps","ps","ps","wq","ps","  ","ww"},
-            {"ww","ps","ps","  ","wp","ps","ps","ps","ps","ps","ps","wq","ww","ps","ps","  ","ww"},
-            {"ww","ps","ps","ps","ps","ps","ps","de","ps","wq","ps","ps","wp","ps","ps","wq","ww"},
-            {"ww","ps","wb","ps","ps","ps","wd","ww","  ","ps","ps","ps","ns","ps","ps","ps","ww"},
-            {"ww","fp","ps","wq","wb","ps","ps","wq","  ","ps","ps","wb","ps","ps","wd","ps","ww"},
-            {"ww","ww","ps","ps","  ","  ","  ","wb","ps","wd","ps","wp","wd","ps","  ","ps","ww"},
-            {"ww","wp","wd","wb","ps","ps","ps","ns","ps","ps","wd","wb","ps","wd","  ","ps","ww"},
-            {"ww","wb","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ww"},
-            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
+            {"ww","  ","  ","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
+            {"ww","fp","  ","  ","  ","  ","  ","  ","ww","ww","  ","fk","ww","zs","zs","zs","ww"},
+            {"ww","  ","  ","  ","  ","ww","  ","  ","ww","  ","  ","ww","ww","  ","  ","ww","ww"},
+            {"ww","  ","  ","ww","ns","ww","ww","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww"},
+            {"ww","ks","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","ww"},
+            {"  ","ks","ks","  ","  ","ww","  ","  ","ww","  ","ww","ww","ww","ww","ww","ww","ww"},
+            {"ww","ww","  ","ww","ww","ww","  ","ww","ww","  ","  ","  ","  ","  ","fl","ww","ww"},
+            {"ww","  ","  ","ww","  ","  ","  ","  ","  ","  ","  ","ww","  ","ww","  ","  ","  "},
+            {"ww","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","ww","ns","  ","  ","  ","  "},
+            {"ww","  ","  ","ww","ns","ls","ww","  ","  ","ww","  ","ww","  ","ww","ww","  ","ww"},
+            {"ww","de","  ","  ","ls","ls","ww","fz","  ","ww","  ","  ","  ","ps","ps","ps","ww"},
+            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","ww","ww","ww","ww"},
         };
         LevelModel level14=new LevelModel(matrix14, 14, 14);
         levels.add(level14);
@@ -365,37 +365,37 @@ public class DataCollector
         levels.add(level19);
         
         String[][] matrix20={
-           //17x12
-            {"ww","  ","  ","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
-            {"ww","fp","  ","  ","  ","  ","  ","  ","ww","ww","  ","fk","ww","zs","zs","zs","ww"},
-            {"ww","  ","  ","  ","  ","ww","  ","  ","ww","  ","  ","ww","ww","  ","  ","ww","ww"},
-            {"ww","  ","  ","ww","ns","ww","ww","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww"},
-            {"ww","ks","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","ww"},
-            {"  ","ks","ks","  ","  ","ww","  ","  ","ww","  ","ww","ww","ww","ww","ww","ww","ww"},
-            {"ww","ww","  ","ww","ww","ww","  ","ww","ww","  ","  ","  ","  ","  ","fl","ww","ww"},
-            {"ww","  ","  ","ww","  ","  ","  ","  ","  ","  ","  ","ww","  ","ww","  ","  ","  "},
-            {"ww","  ","  ","  ","  ","  ","  ","ww","  ","  ","  ","ww","ns","  ","  ","  ","  "},
-            {"ww","  ","  ","ww","ns","ls","ww","  ","  ","ww","  ","ww","  ","ww","ww","  ","ww"},
-            {"ww","de","  ","  ","ls","ls","ww","fz","  ","ww","  ","  ","  ","ps","ps","ps","ww"},
-            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","ww","ww","ww","ww"},
+            //17x12
+            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
+            {"ww","wp","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","wq","  ","ww"},
+            {"ww","ps","  ","  ","  ","  ","wp","ps","ps","wq","wp","ps","wq","  ","ps","  ","ww"},
+            {"ww","ps","wp","ps","ps","ns","ps","ps","ps","wb","ps","ps","ps","wq","ps","  ","ww"},
+            {"ww","ps","ps","  ","wp","ps","ps","ps","ps","ps","ps","wq","ww","ps","ps","  ","ww"},
+            {"ww","ps","ps","ps","ps","ps","ps","de","ps","wq","ps","ps","wp","ps","ps","wq","ww"},
+            {"ww","ps","wb","ps","ps","ps","wd","ww","  ","ps","ps","ps","ns","ps","ps","ps","ww"},
+            {"ww","fp","ps","wq","wb","ps","ps","wq","  ","ps","ps","wb","ps","ps","wd","ps","ww"},
+            {"ww","ww","ps","ps","  ","  ","  ","wb","ps","wd","ps","wp","wd","ps","  ","ps","ww"},
+            {"ww","wp","wd","wb","ps","ps","ps","ns","ps","ps","wd","wb","ps","wd","  ","ps","ww"},
+            {"ww","wb","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ps","ww"},
+            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
         };
         LevelModel level20=new LevelModel(matrix20, 20, 20);
         levels.add(level20);
         
         String[][] matrix21={
              //17x12
-            {"ww","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww"},
-            {"  ","  ","  ","wp","  ","  ","  ","fp","  ","  ","  ","wq","  ","  ","wq","  ","  "},
-            {"  ","wp","ps","ps","wq","wp","  ","  ","wq","wp","ks","ks","ks","wq","  ","  ","  "},
-            {"  ","ps","wp","  ","  ","wd","wb","wp","  ","ps","  ","  ","wq","ks","  ","  ","  "},
-            {"  ","ps","  ","wb","  ","wq","wp","  ","  ","ps","  ","  ","  ","wd","  ","  ","  "},
-            {"  ","ps","  ","wd","wb","ks","  ","wd","la","wb","ps","ps","ps","ps","ps","wq","  "},
-            {"  ","wb","  ","wq","wp","ks","  ","la","sz","la","  ","  ","wd","wb","  ","ps","  "},
-            {"  ","wp","ns","  ","  ","ks","  ","wq","la","wp","  ","  ","wq","wp","  ","ns","  "},
-            {"  ","fk","  ","  ","  ","ks","  ","  ","  ","  ","  ","  ","  ","  ","  ","ps","  "},
-            {"  ","wb","ks","ks","ks","wd","wb","  ","ns","  ","  ","wd","wp","ps","ps","wd","  "},
-            {"  ","ww","wb","wd","wb","  ","  ","wd","wb","ks","ks","ks","wd","wb","wd","  ","  "},
-            {"ww","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww"},
+            {"  ","  ","  ","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","  "},
+            {"  ","  ","  ","ww","wp","  ","  ","  ","  ","  ","wp","  ","  ","  ","wq","  ","  "},
+            {"  ","  ","  ","ww","  ","  ","ns","ww","ns","  ","  ","  ","  ","  ","wd","ww","  "},
+            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","  ","  ","ww","ww","ww","  "},
+            {"ww","wp","  ","  ","  ","  ","  ","  ","wq","ww","  ","  ","  ","ww","ww","ww","  "},
+            {"ww","  ","  ","ww","ww","ww","ww","ww","ps","  ","ps","  ","ps","ns","fp","wq","ww"},
+            {"ww","  ","  ","wp","  ","ks","  ","wq","ps","  ","ps","  ","  ","ww","ww","ks","ww"},
+            {"ww","  ","  ","ks","  ","fk","  ","la","  ","  ","  ","  ","  ","wq","ww","ks","ww"},
+            {"ww","  ","  ","wb","  ","ks","  ","  ","  ","  ","  ","  ","  ","  ","ww","ks","ww"},
+            {"ww","  ","  ","ww","ww","ww","ww","wp","zs","  ","zs","  ","zs","  ","ww","ks","ww"},
+            {"ww","fp","  ","  ","  ","sz","  ","wb","fz","  ","wd","  ","zs","  ","  ","wd","ww"},
+            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
         };
         LevelModel level21=new LevelModel(matrix21, 21, 21);
         levels.add(level21);
@@ -420,18 +420,18 @@ public class DataCollector
         
         String[][] matrix23={
             //17x12
-            {"  ","  ","  ","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","  "},
-            {"  ","  ","  ","ww","wp","  ","  ","  ","  ","  ","wp","  ","  ","  ","wq","  ","  "},
-            {"  ","  ","  ","ww","  ","  ","ns","ww","ns","  ","  ","  ","  ","  ","wd","ww","  "},
-            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","  ","  ","  ","ww","ww","ww","  "},
-            {"ww","wp","  ","  ","  ","  ","  ","  ","wq","ww","  ","  ","  ","ww","ww","ww","  "},
-            {"ww","  ","  ","ww","ww","ww","ww","ww","ps","  ","ps","  ","ps","ns","fp","wq","ww"},
-            {"ww","  ","  ","wp","  ","ks","  ","wq","ps","  ","ps","  ","  ","ww","ww","ks","ww"},
-            {"ww","  ","  ","ks","  ","fk","  ","la","  ","  ","  ","  ","  ","wq","ww","ks","ww"},
-            {"ww","  ","  ","wb","  ","ks","  ","  ","  ","  ","  ","  ","  ","  ","ww","ks","ww"},
-            {"ww","  ","  ","ww","ww","ww","ww","wp","zs","  ","zs","  ","zs","  ","ww","ks","ww"},
-            {"ww","fp","  ","  ","  ","sz","  ","wb","fz","  ","wd","  ","zs","  ","  ","wd","ww"},
-            {"ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww","ww"},
+            {"ww","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww"},
+            {"  ","  ","  ","wp","  ","  ","  ","fp","  ","  ","  ","wq","  ","  ","wq","  ","  "},
+            {"  ","wp","ps","ps","wq","wp","  ","  ","wq","wp","ks","ks","ks","wq","  ","  ","  "},
+            {"  ","ps","wp","  ","  ","wd","wb","wp","  ","ps","  ","  ","wq","ks","  ","  ","  "},
+            {"  ","ps","  ","wb","  ","wq","wp","  ","  ","ps","  ","  ","  ","wd","  ","  ","  "},
+            {"  ","ps","  ","wd","wb","ks","  ","wd","la","wb","ps","ps","ps","ps","ps","wq","  "},
+            {"  ","wb","  ","wq","wp","ks","  ","la","sz","la","  ","  ","wd","wb","  ","ps","  "},
+            {"  ","wp","ns","  ","  ","ks","  ","wq","la","wp","  ","  ","wq","wp","  ","ns","  "},
+            {"  ","fk","  ","  ","  ","ks","  ","  ","  ","  ","  ","  ","  ","  ","  ","ps","  "},
+            {"  ","wb","ks","ks","ks","wd","wb","  ","ns","  ","  ","wd","wp","ps","ps","wd","  "},
+            {"  ","ww","wb","wd","wb","  ","  ","wd","wb","ks","ks","ks","wd","wb","wd","  ","  "},
+            {"ww","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","  ","ww"},           
         };
         LevelModel level23=new LevelModel(matrix23, 23, 23);
         levels.add(level23);
